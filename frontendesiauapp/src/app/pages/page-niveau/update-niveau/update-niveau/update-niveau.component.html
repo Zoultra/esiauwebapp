@@ -1,0 +1,28 @@
+<div class="col-md-6 offset-md-3">
+
+    <div class="container my-container">
+        <div class="card">
+            <div class="card-header text-center">
+                <h3>Modification</h3>
+            </div>
+            <div class="card-body">
+                <form (ngSubmit)="onSubmit()">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1">ID</label>
+                        <input type="text" class="form-control" aria-describedby="emailHelp" id="firstName" [(ngModel)]="niveau.idNiveau" name="firstName" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1">Mot de passe</label>
+                        <input type="text" class="form-control" id="lastName" [(ngModel)]="niveau.nomNiveau" name="lastName">
+                    </div>
+                    <div class="mb-3 d-flex justify-content-md-between">
+                        <button type="button" class="btn btn-danger" [routerLink]="['/niveau']">Annuler</button>
+                        <button type="submit" class="btn btn-success">
+                 <i class="fas fa-save"></i>&nbsp;Mettre à jour
+                </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

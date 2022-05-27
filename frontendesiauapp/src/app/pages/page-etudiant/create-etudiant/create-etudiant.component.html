@@ -1,0 +1,87 @@
+<div class="row m-3">
+    <div class="container my-container">
+        <div class="card">
+            <div class="card-header text-center">
+                <h3>Fiche d'enregistrement d'un etudiant </h3>
+            </div>
+
+            <form (ngSubmit)="onSubmit()">
+                <div class="card-body">
+
+                    <div class="row">
+                        <div class="col">
+                            <label for="exampleInputEmail1">Nom</label>
+                            <input type="text" class="form-control" aria-describedby="emailHelp" [(ngModel)]="etudiant.nomEtudiant" name="nomEtudiant" placeholder="Entrez le nom">
+                        </div>
+                        <div class="col">
+                            <label for="exampleInputEmail1">Prénom</label>
+                            <input type="email" class="form-control" aria-describedby="emailHelp" [(ngModel)]="etudiant.prenomEtudiant" name="prenomEtudiant" placeholder="Entrez l'adresse">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="exampleInputEmail1">Date de naissance</label>
+                            <input type="text" class="form-control" aria-describedby="emailHelp" [(ngModel)]="etudiant.dateNaissance" name="dateNaissance" placeholder="Entrez le nom">
+                        </div>
+                        <div class="col">
+                            <label for="exampleInputEmail1">Lieu de naissance</label>
+                            <input type="email" class="form-control" aria-describedby="emailHelp" [(ngModel)]="etudiant.lieuNaissance" name="lieuNaissance" placeholder="Entrez l'adresse">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="exampleInputEmail1">Tel</label>
+                            <input type="text" class="form-control" aria-describedby="emailHelp" [(ngModel)]="etudiant.telEtudiant" name="nomEtudiant" placeholder="Entrez le nom">
+                        </div>
+                        <!--   <div class="col">
+                            <label for="exampleInputEmail1">Adresse</label>
+                            <input type="email" class="form-control" aria-describedby="emailHelp" name="nomEtudiant" placeholder="Entrez l'adresse">
+                        </div>-->
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="exampleInputEmail1">Prénom du Père</label>
+                            <input type="text" class="form-control" aria-describedby="emailHelp" [(ngModel)]="etudiant.prenomPere" name="prenomPere" placeholder="Entrez le nom">
+                        </div>
+                        <div class="col">
+                            <label for="exampleInputEmail1">Tel du Père</label>
+                            <input type="email" class="form-control" aria-describedby="emailHelp" [(ngModel)]="etudiant.contactPere" name="telPere" placeholder="Entrez l'adresse">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="exampleInputEmail1">Classe</label>
+                            <select id="inputState" class="form-select" name="classe" [(ngModel)]="classeDto.idClasse">
+                            <option selected="selected"  [ngValue]="null" disabled>Choisir la classe</option>
+                            <option *ngFor="let classe of listClasse" value="{{classe.idClasse}}"> {{classe.nomClasse}} - {{classe.niveau.nomNiveau}} </option>
+                          </select>
+                        </div>
+
+                        <!--
+                        <div class="col">
+                            <label for="exampleInputEmail2">Niveau</label>
+                            <select class="form-select" name="niveau" [(ngModel)]="niveauDto.idNiveau">
+                            <option selected > Choisir le niveau </option>
+                            <option *ngFor="let niveau of listNiv" value="{{niveau.idNiveau}}"> {{niveau.nomNiveau}} </option>
+                            
+                          </select>
+                        </div>
+        -->
+                    </div>
+
+                    <div class="row">
+                        <div class="mb-0 mt-3  d-flex justify-content-md-end">
+                            <button type="button" class="btn btn-danger" [routerLink]="['/list-etudiant']">Annuler</button>&nbsp;&nbsp;
+                            <button type="submit" class="btn btn-primary">
+                 <i class="fas fa-check"></i>Enregistrer 
+                </button>
+                        </div>
+                    </div>
+
+
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

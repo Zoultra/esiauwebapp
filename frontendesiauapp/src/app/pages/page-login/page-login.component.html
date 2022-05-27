@@ -1,0 +1,25 @@
+<div class="container my-container">
+    <div class="card">
+        <div class="card-header text-center">
+            <h3>Authentification</h3>
+        </div>
+        <div class="card-body">
+
+            <div class="mb-3">
+                <label for="exampleInputEmail1">Adresse E-mail</label>
+                <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Entrez e-mail">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1">Mot de passe</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Entrez mot de passe">
+            </div>
+            <div class="mb-3 d-flex justify-content-md-between">
+                <button type="button" class="btn btn-link" [routerLink]="['/inscrire']">S'inscrire</button>
+                <button type="button" class="btn btn-primary">
+                 <i class="fas fa-check"></i> S'authentifier
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>

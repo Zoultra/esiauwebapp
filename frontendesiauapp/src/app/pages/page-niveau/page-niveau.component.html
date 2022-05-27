@@ -1,0 +1,81 @@
+<div class="col">
+    <div class="row m-3">
+
+        <div class="col-md-8 p-0">
+            <h1>Liste des niveaux</h1>
+        </div>
+        <div class="col-md-3">
+            <div class="row">
+                <div class="col-md-4">
+                    <button type="button" (click)="reloadPage()" class="btn btn-warning">Actualiser</button>
+                </div>
+
+                <div class="col-md-4">
+                    <button type="button" class="btn btn-success">Exporter</button>
+                </div>
+                <div class="col-md-4">
+                    <button type="button" class="btn btn-primary" (click)="openModal()">Nouveau</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row m-3">
+
+        <table datatable [dtOptions]="dtOptions" class="table table-striped table-bordered table-sm row-border hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom </th>
+                    <th>Action </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let niveau of niveaux">
+                    <td> {{ niveau.idNiveau }} </td>
+                    <td> {{ niveau.nomNiveau }} </td>
+
+                    <td>
+                        <button (click)="updateNiveau(niveau.idNiveau)" class="btn btn-info"> Modifier</button>
+                        <button (click)="deleteNiveau(niveau.idNiveau)" class="btn btn-danger" style="margin-left: 10px"> Supprimer</button>
+
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="modal fade" data-bs-backdrop="static" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">{{modalTitle}}</h5>
+                    <button type="button" class="btn-close" (click)="closeModal()" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form (ngSubmit)="onSubmit()" [formGroup]="exform">
+                    <div class="modal-body">
+
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Nom niveau:</label>
+                            <input formControlName="nomNiveau" type="text" class="form-control" id="nomNiveau" [(ngModel)]="niveau.nomNiveau" name="nomNiveau" placeholder="Saisir le nom du Niveau">
+                            <div *ngIf="nomNiveau.invalid && (nomNiveau.dirty || nomNiveau.touched)">
+                                <span class="error" *ngIf="nomNiveau.errors?.required">Veillez saisir un nom pour activer le bouton Enregistrer</span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" (click)="closeModal()" class="btn btn-danger" data-bs-dismiss="modal">Fermer</button>
+                        <button [disabled]="!nomNiveau.valid" type="submit" class="btn btn-success">Enregistrer</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+
+
+</div>

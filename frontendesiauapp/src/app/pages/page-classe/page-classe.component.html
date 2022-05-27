@@ -1,0 +1,92 @@
+<div class="col">
+    <!-- Commentaire   -->
+    <div class="row m-3">
+
+        <div class="col-md-8 p-0">
+            <h1>Liste des classes</h1>
+        </div>
+        <div class="col-md-3">
+            <div class="row">
+                <div class="col-md-4">
+                    <button type="button" (click)="reloadPage()" class="btn btn-warning">Actualiser</button>
+                </div>
+
+                <div class="col-md-4">
+                    <button type="button" class="btn btn-success">Exporter</button>
+                </div>
+                <div class="col-md-4">
+                    <button type="button" class="btn btn-primary" (click)="openModal()">Nouveau</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row m-3">
+
+        <table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom </th>
+                    <th>Niveau</th>
+                    <th>Action </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let classe of listClasse">
+                    <td> {{ classe.idClasse }} </td>
+                    <td> {{ classe.nomClasse }} </td>
+                    <td> {{ classe.niveau.nomNiveau}} </td>
+
+                    <td>
+                        <button (click)="updateClasse(classe.idClasse)" class="btn btn-info"> Modifier</button>
+                        <button (click)="deleteClasse(classe.idClasse)" class="btn btn-danger" style="margin-left: 10px"> Supprimer</button>
+
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="modal fade" data-bs-backdrop="static" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">{{modalTitle}}</h5>
+                    <button type="button" class="btn-close" (click)="closeModal()" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <form (ngSubmit)="onSubmit()">
+                    <div class="modal-body">
+
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Nom classe:</label>
+                            <input type="text" class="form-control" id="nomClasse" name="nomClasse" [(ngModel)]="classe.nomClasse" placeholder="Saisir le nom du Classe">
+
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Niveau:</label>
+                            <select class="form-select" aria-label="Default select example" name="niveau" [(ngModel)]="niveauDto.idNiveau">
+                                <option selected >Selectionner un niveau</option>
+                                <option  *ngFor="let niveau of listNiv" value="{{niveau.idNiveau}}"> {{niveau.nomNiveau}}</option>
+    
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" (click)="closeModal()" class="btn btn-danger" data-bs-dismiss="modal"><i class="fas fa-ban"></i>&nbsp;Fermer</button>
+                        <button type="submit" class="btn btn-success"><i class="fas fa-save"></i>&nbsp;Enregistrer</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
