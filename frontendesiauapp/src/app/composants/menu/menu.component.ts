@@ -101,7 +101,7 @@ export class MenuComponent implements OnInit {
         id:'51',
         titre:'Gestion des UEs',
         icon:'fas fa-edit',
-        url:''
+        url:'list-ue'
       },
       {
         id:'52',

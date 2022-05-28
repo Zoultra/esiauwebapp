@@ -20,6 +20,9 @@ import { PageClasseComponent } from './pages/page-classe/page-classe.component';
 import { CreateEtudiantComponent } from './pages/page-etudiant/create-etudiant/create-etudiant.component';
 import { UpdateEtudiantComponent } from './pages/page-etudiant/update-etudiant/update-etudiant.component';
 import { ListEtudiantComponent } from './pages/page-etudiant/list-etudiant/list-etudiant.component';
+import { CreateUeComponent } from './pages/page-ue/create-ue/create-ue.component';
+import { ListUeComponent } from './pages/page-ue/list-ue/list-ue.component';
+import { UpdateUeComponent } from './pages/page-ue/update-ue/update-ue.component';
 
 
 
@@ -38,7 +41,10 @@ import { ListEtudiantComponent } from './pages/page-etudiant/list-etudiant/list-
     PageClasseComponent,
     CreateEtudiantComponent,
     UpdateEtudiantComponent,
-    ListEtudiantComponent 
+    ListEtudiantComponent,
+    CreateUeComponent,
+    ListUeComponent,
+    UpdateUeComponent 
  
    
   ],
