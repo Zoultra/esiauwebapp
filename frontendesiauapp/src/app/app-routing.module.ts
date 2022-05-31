@@ -12,6 +12,9 @@ import { CreateEtudiantComponent } from './pages/page-etudiant/create-etudiant/c
 import { ListUeComponent } from './pages/page-ue/list-ue/list-ue.component';
 import { CreateUeComponent } from './pages/page-ue/create-ue/create-ue.component';
 import { UpdateUeComponent } from './pages/page-ue/update-ue/update-ue.component';
+import { ListMatiereComponent } from './pages/page-matiere/list-matiere/list-matiere.component';
+import { CreateMatiereComponent } from './pages/page-matiere/create-matiere/create-matiere.component';
+import { UpdateMatiereComponent } from './pages/page-matiere/update-matiere/update-matiere.component';
 
 
 
@@ -76,6 +79,18 @@ const routes: Routes = [
       {
         path: 'update-ue/:idUe',
         component: UpdateUeComponent
+      },
+      {
+        path: 'list-matiere',
+        component: ListMatiereComponent
+      },
+      {
+        path: 'create-matiere',
+        component: CreateMatiereComponent
+      },
+      {
+        path: 'update-matiere/:idMatiere',
+        component: UpdateMatiereComponent
       }
     ] 
   }

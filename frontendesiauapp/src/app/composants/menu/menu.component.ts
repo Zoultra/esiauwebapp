@@ -121,7 +121,7 @@ export class MenuComponent implements OnInit {
         id:'61',
         titre:'Gestion des matières',
         icon:'fa fa-edit',
-        url:''
+        url:'list-matiere'
       },
       {
         id:'62',
@@ -139,7 +139,7 @@ export class MenuComponent implements OnInit {
     sousMenu: [
       {
         id:'71',
-        titre:'Gestion des notes',
+        titre:'Saisir note',
         icon:'fa fa-edit',
         url:''
       },
