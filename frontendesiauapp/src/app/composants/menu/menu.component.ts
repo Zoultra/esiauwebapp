@@ -161,7 +161,7 @@ export class MenuComponent implements OnInit {
         id:'81',
         titre:'Gestion des professeurs',
         icon:'fa fa-edit',
-        url:''
+        url:'professeur-list'
       },
       {
         id:'82',

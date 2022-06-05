@@ -6,6 +6,7 @@ import { Classe } from 'src/app/composants/models/classe';
 import { Niveau } from 'src/app/composants/models/niveau';
 import { ClasseService } from '../../composants/services/classe.service';
 import { NiveauService } from '../../composants/services/niveau.service';
+import { Etudiant } from '../../composants/models/etudiant';
 
 declare var window:any;
 
@@ -28,7 +29,7 @@ export class PageClasseComponent implements OnInit {
     
   listClasse: Array<any> = [];
   listNiv: Array<Niveau> = [];
-   
+  
    
   niveauDto : any={};
   
@@ -80,6 +81,8 @@ export class PageClasseComponent implements OnInit {
  .subscribe(niveaux => {
    this.listNiv = niveaux;
  });
+
+ 
 
 }
 
@@ -170,6 +173,7 @@ onSubmit(){
 this.saveClasse();
 console.log(this.classe);
 }
+
 
 
 /* reload*/

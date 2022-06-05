@@ -28,6 +28,9 @@ import { ListMatiereComponent } from './pages/page-matiere/list-matiere/list-mat
 import { UpdateMatiereComponent } from './pages/page-matiere/update-matiere/update-matiere.component';
 import { SaisirNoteComponent } from './pages/page-note/saisir-note/saisir-note.component';
 import { FormulaireSaisieComponent } from './pages/page-note/formulaire-saisie/formulaire-saisie.component';
+import { CreateProfComponent } from './pages/page-prof/create-prof/create-prof.component';
+import { ListProfComponent } from './pages/page-prof/list-prof/list-prof.component';
+import { UpdateProfComponent } from './pages/page-prof/update-prof/update-prof.component';
 
 
 
@@ -54,7 +57,10 @@ import { FormulaireSaisieComponent } from './pages/page-note/formulaire-saisie/f
     ListMatiereComponent,
     UpdateMatiereComponent,
     SaisirNoteComponent,
-    FormulaireSaisieComponent 
+    FormulaireSaisieComponent,
+    CreateProfComponent,
+    ListProfComponent,
+    UpdateProfComponent 
  
    
   ],

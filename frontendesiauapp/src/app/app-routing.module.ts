@@ -17,6 +17,10 @@ import { CreateMatiereComponent } from './pages/page-matiere/create-matiere/crea
 import { UpdateMatiereComponent } from './pages/page-matiere/update-matiere/update-matiere.component';
 import { SaisirNoteComponent } from './pages/page-note/saisir-note/saisir-note.component';
 import { FormulaireSaisieComponent } from './pages/page-note/formulaire-saisie/formulaire-saisie.component';
+import { ListProfComponent } from './pages/page-prof/list-prof/list-prof.component';
+import { UpdateProfComponent } from './pages/page-prof/update-prof/update-prof.component';
+import { CreateProfComponent } from './pages/page-prof/create-prof/create-prof.component';
+
 
 
 
@@ -101,6 +105,19 @@ const routes: Routes = [
       {
         path: 'saisie-de-note/:idEtudiant',
         component: FormulaireSaisieComponent
+      },
+      
+      {
+        path: 'create-prof',
+        component: CreateProfComponent
+      },
+      {
+        path: 'professeur-list',
+        component: ListProfComponent
+      },
+      {
+        path: 'update-prof/:idProf',
+        component: UpdateProfComponent
       }
     ] 
   }
