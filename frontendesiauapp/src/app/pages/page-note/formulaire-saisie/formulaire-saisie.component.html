@@ -1,0 +1,78 @@
+<div class="row m-3">
+    <div class="container my-container">
+        <div class="card">
+            <div class="card-header text-center">
+                <h3>Enregistrement de notes pour: {{etudiant.nomEtudiant}} {{etudiant.prenomEtudiant}} </h3>
+            </div>
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <label for="exampleInputEmail1">Matière:</label>
+                            <select class="form-select" name="matiere" formControlName="matiere" [ngClass]="{'is-invalid':submitted && registerForm.controls}" [(ngModel)]="matiereDto.idMatiere">
+                                <option [ngValue]="null" disabled selected >Selectionner une matière</option>
+                                <option  *ngFor="let matiere of listMatieres" value="{{matiere.idMatiere}}"> {{matiere.nomMatiere}}</option>
+    
+                            </select>
+                            <div *ngIf="submitted && registerForm.controls" class="text-danger">
+                                <div *ngIf="submitted && registerForm.controls">
+                                    Champ obligatoire
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <label for="exampleInputEmail1">Semestre:</label>
+                            <select class="form-select" name="examen" formControlName="examen" [ngClass]="{'is-invalid':submitted && registerForm.controls}" [(ngModel)]="note.examen">
+                                <option [ngValue]="null" disabled selected >Selectionner semestre </option>
+                                <option value="1"  >Semestre 1</option>
+                                <option value="2"  >Semestre 2</option>
+                                <option value="3"  >Semestre 3</option>
+                                <option value="4"  >Semestre 4</option>
+                                <option value="5"  >Semestre 5</option>
+                                <option value="6"  >Semestre 6</option>
+                            </select>
+                            <div *ngIf="submitted && registerForm.controls" class="text-danger">
+                                <div *ngIf="submitted && registerForm.controls">
+                                    Champ obligatoire
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="exampleInputEmail1">Note d'Examen</label>
+                            <input formControlName="noteExamen" type="number" [ngClass]="{'is-invalid':submitted && registerForm.controls}" class="form-control" aria-describedby="emailHelp" name="noteExamen" [(ngModel)]="note.noteExamen" placeholder="Entrez la note d'examen">
+                            <div *ngIf="submitted && registerForm.controls" class="text-danger">
+                                <div *ngIf="submitted && registerForm.controls">
+                                    Champ obligatoire
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <label for="exampleInputEmail1">Note de devoir</label>
+                            <input type="number" formControlName="noteDevoir" [ngClass]="{'is-invalid':submitted && registerForm.controls}" class="form-control" aria-describedby="emailHelp" name="noteDevoir" [(ngModel)]="note.noteDevoir" placeholder="Entrez la note de devoir">
+                            <div *ngIf="submitted && registerForm.controls" class="text-danger">
+                                <div *ngIf="submitted && registerForm.controls">
+                                    Champ obligatoire
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="mb-0 mt-3  d-flex justify-content-md-end">
+                            <button type="button" class="btn btn-danger" [routerLink]="['/note']">Annuler</button>&nbsp;&nbsp;
+                            <button type="submit" class="btn btn-primary">
+                 <i class="fas fa-check"></i>Enregistrer 
+                </button>
+                        </div>
+                    </div>
+
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

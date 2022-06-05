@@ -26,6 +26,8 @@ import { UpdateUeComponent } from './pages/page-ue/update-ue/update-ue.component
 import { CreateMatiereComponent } from './pages/page-matiere/create-matiere/create-matiere.component';
 import { ListMatiereComponent } from './pages/page-matiere/list-matiere/list-matiere.component';
 import { UpdateMatiereComponent } from './pages/page-matiere/update-matiere/update-matiere.component';
+import { SaisirNoteComponent } from './pages/page-note/saisir-note/saisir-note.component';
+import { FormulaireSaisieComponent } from './pages/page-note/formulaire-saisie/formulaire-saisie.component';
 
 
 
@@ -50,7 +52,9 @@ import { UpdateMatiereComponent } from './pages/page-matiere/update-matiere/upda
     UpdateUeComponent,
     CreateMatiereComponent,
     ListMatiereComponent,
-    UpdateMatiereComponent 
+    UpdateMatiereComponent,
+    SaisirNoteComponent,
+    FormulaireSaisieComponent 
  
    
   ],

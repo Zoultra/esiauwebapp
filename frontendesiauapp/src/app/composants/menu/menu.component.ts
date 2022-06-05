@@ -141,7 +141,7 @@ export class MenuComponent implements OnInit {
         id:'71',
         titre:'Saisir note',
         icon:'fa fa-edit',
-        url:''
+        url:'note'
       },
       {
         id:'72',

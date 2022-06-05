@@ -15,6 +15,8 @@ import { UpdateUeComponent } from './pages/page-ue/update-ue/update-ue.component
 import { ListMatiereComponent } from './pages/page-matiere/list-matiere/list-matiere.component';
 import { CreateMatiereComponent } from './pages/page-matiere/create-matiere/create-matiere.component';
 import { UpdateMatiereComponent } from './pages/page-matiere/update-matiere/update-matiere.component';
+import { SaisirNoteComponent } from './pages/page-note/saisir-note/saisir-note.component';
+import { FormulaireSaisieComponent } from './pages/page-note/formulaire-saisie/formulaire-saisie.component';
 
 
 
@@ -91,6 +93,14 @@ const routes: Routes = [
       {
         path: 'update-matiere/:idMatiere',
         component: UpdateMatiereComponent
+      },
+      {
+        path: 'note',
+        component: SaisirNoteComponent
+      },
+      {
+        path: 'saisie-de-note/:idEtudiant',
+        component: FormulaireSaisieComponent
       }
     ] 
   }

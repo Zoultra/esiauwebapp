@@ -1,0 +1,61 @@
+<div class="col">
+    <div class="row m-3">
+
+        <div class="col-md-8 p-0">
+            <h1>Gestion des notes</h1>
+        </div>
+        <div class="col-md-3">
+            <div class="row">
+                <div class="col-md-4">
+                    <button type="button" (click)="reloadPage()" class="btn btn-warning">Actualiser</button>
+                </div>
+
+                <div class="col-md-4">
+                    <button type="button" class="btn btn-success">Exporter</button>
+                </div>
+                <div class="col-md-4">
+
+                    <select id="inputState" class="form-select" style="width:200px" name="classe">
+                            <option  selected="selected"  [ngValue]="null" disabled>Classes</option>
+                            <option  value="0"> GIT - L1 </option>
+                          </select>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row m-3">
+
+        <table class="table table-striped table-bordered table-sm row-border hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nom </th>
+                    <th>Prenom </th>
+                    <th>Tel </th>
+                    <th>Classe </th>
+                    <th>Note </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let etudiant of listEtudiant">
+
+                    <td> {{ etudiant.idEtudiant }} </td>
+                    <td> {{ etudiant.nomEtudiant }} </td>
+                    <td> {{ etudiant.prenomEtudiant }} </td>
+                    <td> {{ etudiant.telEtudiant }} </td>
+                    <td> {{ etudiant.classe.nomClasse }} - {{ etudiant.classe.niveau.nomNiveau }} </td>
+                    <td>
+                        <button (click)="saisirNote(etudiant.idEtudiant)" class="btn btn-info"> Ajouter</button>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+</div>
