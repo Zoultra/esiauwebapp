@@ -20,6 +20,11 @@ import { FormulaireSaisieComponent } from './pages/page-note/formulaire-saisie/f
 import { ListProfComponent } from './pages/page-prof/list-prof/list-prof.component';
 import { UpdateProfComponent } from './pages/page-prof/update-prof/update-prof.component';
 import { CreateProfComponent } from './pages/page-prof/create-prof/create-prof.component';
+import { NoteEtudiantComponent } from './pages/page-etudiant/note-etudiant/note-etudiant.component';
+import { ListDepartementComponent } from './pages/page-departement/list-departement/list-departement.component';
+import { CreateDepartementComponent } from './pages/page-departement/create-departement/create-departement.component';
+import { UpdateDepartementComponent } from './pages/page-departement/update-departement/update-departement.component';
+import { ProfMatiereComponent } from './pages/page-prof/prof-matiere/prof-matiere.component';
 
 
 
@@ -118,6 +123,26 @@ const routes: Routes = [
       {
         path: 'update-prof/:idProf',
         component: UpdateProfComponent
+      },
+      {
+        path: 'note-etudiant/:idEtudiant',
+        component: NoteEtudiantComponent
+      },
+      {
+        path: 'list-departement',
+        component: ListDepartementComponent
+      },
+      {
+        path: 'create-departement',
+        component: CreateDepartementComponent
+      },
+      {
+        path: 'update-departement/:idDepartement',
+        component: UpdateDepartementComponent
+      },
+      {
+        path: 'prof-matiere',
+        component: ProfMatiereComponent
       }
     ] 
   }

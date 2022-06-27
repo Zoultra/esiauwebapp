@@ -31,12 +31,8 @@ onSubmit(){
 this.ueService.updateUe(this.idUe, this.ue).subscribe(data =>{
   this.goToUeList();  
    this.toast.success({detail:"Mesage de reussite",summary:"Ue modifié avec succès",duration:5000})
- },
-error => {
-  
- this.toast.error({detail:"Message d'erreur",summary:"Modification echoué, réessayer encore",duration:5000});
+ },error => {this.toast.error({detail:"Message d'erreur",summary:"Modification echoué, réessayer encore",duration:5000});
 })
-
 }
 goToUeList(){
   this.router.navigate(['/list-ue']);

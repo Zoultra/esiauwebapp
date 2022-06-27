@@ -1,0 +1,37 @@
+<div class="row m-3">
+    <div class="container my-container">
+        <div class="card">
+            <div class="card-header text-center">
+                <h3>Modification de Departement(Filière) </h3>
+            </div>
+            <form (ngSubmit)="onSubmit()">
+                <div class="card-body">
+                    <div class="row">
+
+                        <div class="col">
+                            <label for="exampleInputEmail1">Nom departement(Filière)</label>
+                            <input type="text" class="form-control" aria-describedby="emailHelp" [(ngModel)]="departement.nomDepartement" name="nomDepartement" placeholder="Entrez le nom du departement ou filière">
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+
+                    </div>
+
+                    <div class="row">
+                        <div class="mb-0 mt-3  d-flex justify-content-md-end">
+                            <button type="button" class="btn btn-danger" [routerLink]="['/list-departement']">Annuler</button>&nbsp;&nbsp;
+                            <button type="submit" class="btn btn-primary">
+                 <i class="fas fa-check"></i>Enregistrer 
+                </button>
+                        </div>
+                    </div>
+
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

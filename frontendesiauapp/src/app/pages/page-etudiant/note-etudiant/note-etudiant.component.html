@@ -1,0 +1,71 @@
+<div class="col">
+    <div class="row m-3">
+
+        <div class="col-md-6 p-0">
+            <h1>Notes</h1>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-4">
+                    <button type="button" (click)="reloadPage()" class="btn btn-warning">Actualiser</button>
+                </div>
+
+                <div class="col-md-4 form-floating ps-2">
+
+                    <select style="width: 190px ;" class="form-select" id="floatingSelect" [(ngModel)]="myFilterText" aria-label="Floating label select example">
+                         <option value="">Tous</option>
+                          <option value="Semestre 1">L1-Semestre 1</option>
+                          <option value="Semestre 2">L1-Semestre 2</option>
+                          <option value="Semestre 3">L2-Semestre 3</option>
+                          <option value="Semestre 4">L2-Semestre 4</option>
+                          <option value="Semestre 5">L3-Semestre 5</option>
+                          <option value="Semestre 6">L3-Semestre 6</option>
+                        </select>
+                    <label style="width: 190px; font-size: 18px; font-weight: bold;" for="floatingSelect">Choisir le Semestre</label>
+                </div>
+
+                <div class="col-md-4">
+                    <button type="button" [routerLink]="['/list-etudiant']" class="btn btn-primary">Retour</button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="row m-3">
+
+        <table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Etudiant</th>
+                    <th>Matière</th>
+                    <th>Note Devoir</th>
+                    <th>Note d'Examen </th>
+                    <th>Semestre</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                <!---->
+                <tr *ngFor="let note of notes | filter: myFilterText ">
+
+                    <td> {{ note.idNote }} </td>
+                    <td> {{ note.etudiant.nomEtudiant }} </td>
+                    <td> {{ note.matiere.nomMatiere }} </td>
+                    <td> {{ note.noteDevoir }} </td>
+                    <td> {{ note.noteExamen }} </td>
+                    <td> {{ note.examen }} </td>
+
+
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+</div>

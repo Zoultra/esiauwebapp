@@ -93,19 +93,19 @@ export class MenuComponent implements OnInit {
   },
   {
     id:'5',
-    titre:'UE',
+    titre:'Departement',
     icon:'fas fa-plus',
     url:'',
     sousMenu: [
       {
         id:'51',
-        titre:'Gestion des UEs',
+        titre:'Gestion des departements',
         icon:'fas fa-edit',
-        url:'list-ue'
+        url:'list-departement'
       },
       {
         id:'52',
-        titre:'UE / Matieres',
+        titre:'UE / departements',
         icon:'fa fa-info-circle',
         url:''
       }
@@ -113,19 +113,19 @@ export class MenuComponent implements OnInit {
   },
   {
     id:'6',
-    titre:'Matières',
-    icon:'fa fa-book',
+    titre:'UE',
+    icon:'fas fa-plus',
     url:'',
     sousMenu: [
       {
         id:'61',
-        titre:'Gestion des matières',
-        icon:'fa fa-edit',
-        url:'list-matiere'
+        titre:'Gestion des UEs',
+        icon:'fas fa-edit',
+        url:'list-ue'
       },
       {
         id:'62',
-        titre:'Matières / Examens',
+        titre:'UE / Matieres',
         icon:'fa fa-info-circle',
         url:''
       }
@@ -133,19 +133,19 @@ export class MenuComponent implements OnInit {
   },
   {
     id:'7',
-    titre:'Notes',
-    icon:'fas fa-plus',
+    titre:'Matières',
+    icon:'fa fa-book',
     url:'',
     sousMenu: [
       {
         id:'71',
-        titre:'Saisir note',
+        titre:'Gestion des matières',
         icon:'fa fa-edit',
-        url:'note'
+        url:'list-matiere'
       },
       {
         id:'72',
-        titre:'Notes / Classes',
+        titre:'Matières / Examens',
         icon:'fa fa-info-circle',
         url:''
       }
@@ -153,19 +153,19 @@ export class MenuComponent implements OnInit {
   },
   {
     id:'8',
-    titre:'Professeurs',
-    icon:'fas fa-user-secret',
+    titre:'Notes',
+    icon:'fas fa-plus',
     url:'',
     sousMenu: [
       {
         id:'81',
-        titre:'Gestion des professeurs',
+        titre:'Saisir note',
         icon:'fa fa-edit',
-        url:'professeur-list'
+        url:'note'
       },
       {
         id:'82',
-        titre:'Professeurs / Matières',
+        titre:'Notes / Classes',
         icon:'fa fa-info-circle',
         url:''
       }
@@ -173,12 +173,32 @@ export class MenuComponent implements OnInit {
   },
   {
     id:'9',
+    titre:'Professeurs',
+    icon:'fas fa-user-secret',
+    url:'',
+    sousMenu: [
+      {
+        id:'91',
+        titre:'Gestion des professeurs',
+        icon:'fa fa-edit',
+        url:'professeur-list'
+      },
+      {
+        id:'92',
+        titre:'Professeurs / Matières',
+        icon:'fa fa-info-circle',
+        url:'prof-matiere'
+      }
+    ]
+  },
+  {
+    id:'10',
     titre:'Parametrages',
     icon:'fa fa-tasks',
     url:'',
     sousMenu: [
       {
-        id:'91',
+        id:'101',
         titre:'Utilisateurs',
         icon:'fa fa-user',
         url:''

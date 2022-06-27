@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
+import { Departement } from 'src/app/composants/models/departement';
 import { UE } from 'src/app/composants/models/ue';
+import { DepartementService } from 'src/app/composants/services/departement.service';
 import { UeService } from '../../../composants/services/ue.service';
 
 @Component({
@@ -13,10 +15,16 @@ export class CreateUeComponent implements OnInit {
 
   ue: UE = new UE();
   idUe!: number;
+  departementDto : any = {}
+  departements: Array<Departement> = [];
 
-  constructor(private ueService : UeService, private router: Router, private toast: NgToastService) { }
+  constructor(private ueService : UeService, private router: Router, private toast: NgToastService,
+     private departementService: DepartementService) { }
 
   ngOnInit(): void {
+    this.departementService.getDepartements().subscribe(data => {
+      this.departements = data;
+  });
   }
 
   onSubmit(){
@@ -25,8 +33,7 @@ export class CreateUeComponent implements OnInit {
     }
     saveUe(): void{
   
-      //this.etudiant.niveau = this.niveauDto;
-     // this.ue.classe = this.classeDto;
+      this.ue.departement = this.departementDto;
       
       this.ueService.createUe(this.ue).subscribe(data =>{
          console.log(data);

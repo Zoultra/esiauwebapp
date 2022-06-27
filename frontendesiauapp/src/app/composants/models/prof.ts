@@ -4,7 +4,9 @@ export class Professeur {
     prenomProf!: string
     specialite!: string
     diplome!: string
+    categorie!: string
     telProf!: string
     emailProf!: string
+    departement!:string
    
 }

@@ -22,16 +22,16 @@
     </div>
     <div class="row m-3">
 
-        <table class="table table-striped table-bordered table-sm row-border hover">
+        <table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Nom </th>
                     <th>Prenom </th>
                     <th>Specialité</th>
-                    <th>Dernier Diplome</th>
                     <th>Telephone </th>
                     <th>E-mail</th>
+                    <th>Details</th>
                     <th>Action </th>
 
                 </tr>
@@ -39,14 +39,160 @@
             <tbody>
                 <tr *ngFor="let prof of profs">
 
-                    <td> {{ prof.idProf }} </td>
+                    <td> {{ prof.idProf}} </td>
                     <td> {{ prof.nomProf }} </td>
                     <td> {{ prof.prenomProf }} </td>
                     <td> {{ prof.specialite }} </td>
-                    <td> {{ prof.diplome }} </td>
                     <td> {{ prof.telProf }} </td>
                     <td> {{ prof.emailProf }} </td>
+                    <td> <button data-bs-toggle="modal" [attr.data-bs-target]="'#exampleModal' + prof.idProf" class="btn btn-info" style="margin-left: 10px">  <i class="fa fa-eye"></i></button>
 
+                        <!-- Modal details professeur -->
+                        <div class="modal fade" id="exampleModal{{prof.idProf}}" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog  modal-lg ">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Fiche professeur: {{prof.prenomProf}} {{prof.nomProf}}</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        <div class="container">
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">
+                                                    <div class="row">
+                                                        <div class="col text-end fs-4">
+                                                            Nom :
+                                                        </div>
+                                                        <div class="col fs-4">
+                                                            {{ prof.nomProf }}
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <div class="row">
+                                                        <div class="col text-end fs-4">
+                                                            Prénom :
+                                                        </div>
+                                                        <div class="col fs-4">
+                                                            {{ prof.prenomProf }}
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <div class="row">
+                                                        <div class="col text-end fs-4">
+                                                            Specialité:
+                                                        </div>
+                                                        <div class="col fs-4">
+                                                            {{ prof.specialite }}
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <div class="row">
+                                                        <div class="col text-end fs-4">
+                                                            Dernier Diplome:
+                                                        </div>
+                                                        <div class="col fs-4">
+                                                            {{ prof.diplome }}
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <div class="row">
+                                                        <div class="col text-end fs-4">
+                                                            Département(Filière):
+                                                        </div>
+                                                        <div class="col fs-4">
+                                                            {{ prof.departement.nomDepartement}}
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <div class="row">
+                                                        <div class="col text-end fs-4">
+                                                            Categorie :
+                                                        </div>
+                                                        <div class="col fs-4">
+                                                            {{ prof.categorie }}
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <div class="row">
+                                                        <div class="col text-end fs-4">
+                                                            Téléphone :
+                                                        </div>
+                                                        <div class="col fs-4">
+                                                            {{ prof.telProf }}
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <div class="row">
+                                                        <div class="col text-end fs-4">
+                                                            Adresse E-mail :
+                                                        </div>
+                                                        <div class="col fs-4">
+                                                            {{ prof.emailProf }}
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fermer</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+                        <!-- Modal Cours professeur -->
+                        <div class="modal fade" id="coursProfModal{{prof.idProf}}" data-bs-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog  modal-lg ">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Liste des cours du professeurs: {{prof.prenomProf}} {{prof.nomProf}}</h5>
+                                        <button type="button" class="btn-close" data-bs-toggle="modal" [attr.data-bs-target]="'#exampleModal' + prof.idProf" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        <div class="container">
+                                            <table class="table table-striped table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">ID</th>
+                                                        <th scope="col">Matière</th>
+                                                        <th scope="col">Classe</th>
+                                                        <th scope="col">Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td></td>
+                                                    </tr>
+                                                </tbody>
+
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" [attr.data-bs-target]="'#exampleModal' + prof.idProf">Fermer</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
                     <td>
                         <button (click)="updateProf(prof.idProf)" class="btn btn-info"> Modifier</button>
                         <button (click)="deleteProf(prof.idProf)" class="btn btn-danger" style="margin-left: 10px"> Supprimer</button>

@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import { MaitereService } from '../../../composants/services/maitere.service';
+import { MatiereService } from '../../../composants/services/matiere.service';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 
@@ -14,7 +14,7 @@ export class ListMatiereComponent implements OnDestroy, OnInit {
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
   
-  constructor(private maitereService: MaitereService, private router: Router,private toast: NgToastService) { }
+  constructor(private matiereService: MatiereService, private router: Router,private toast: NgToastService) { }
 
   ngOnInit(): void {
     this.dtOptions = {
@@ -22,12 +22,13 @@ export class ListMatiereComponent implements OnDestroy, OnInit {
       pageLength: 2
     };
 
-    this.maitereService.getMatiereList().subscribe(data => {
+    this.matiereService.getMatiereList().subscribe(data => {
       this.listMatieres = data;
       this.dtTrigger.next;
       console.log(data);
     });
   }
+  
   
   ngOnDestroy(): void {
     // Do not forget to unsubscribe the event
@@ -42,7 +43,7 @@ export class ListMatiereComponent implements OnDestroy, OnInit {
   deleteMatiere(idMatiere: number){
  
 //Methode pour supprimer une matiere
-this.maitereService.deleteMatiere(idMatiere).subscribe( data => {
+this.matiereService.deleteMatiere(idMatiere).subscribe( data => {
   console.log(data);
  this.toast.success({detail:"Mesage de reussite",summary:"Matière supprimée avec succès",duration:2000});
  setTimeout(() => {

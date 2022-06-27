@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EtudiantService } from '../../../composants/services/etudiant.service';
 import { NgToastService } from 'ng-angular-popup';
+import { ClasseService } from '../../../composants/services/classe.service';
+import { Etudiant } from 'src/app/composants/models/etudiant';
 
 @Component({
   selector: 'app-list-etudiant',
@@ -11,15 +13,19 @@ import { NgToastService } from 'ng-angular-popup';
 export class ListEtudiantComponent implements OnInit {
 
   dtOptions: DataTables.Settings = {};
+
+  listClasse: Array<any> = [];
    
-  listEtudiant: Array<any> = [];
+  listEtudiant: Array<Etudiant> = [];
   //listClasse: Array<Classe> = [];
   
  // etudiant: Etudiant = new Etudiant();
 
  toasts: any[] = [];
+ myFilterText!:any
 
-  constructor( private etudiantService: EtudiantService,  private router: Router,private toast: NgToastService) { }
+  constructor( private etudiantService: EtudiantService,  private router: Router,private toast: NgToastService,
+     private classeService: ClasseService) { }
 
   ngOnInit(): void {
     this.dtOptions = {
@@ -27,12 +33,19 @@ export class ListEtudiantComponent implements OnInit {
       pageLength: 5,
       lengthMenu : [5, 10, 25, 100],
       processing: true,
+      stateSave: true,
       language: {
         url: '//cdn.datatables.net/plug-ins/1.11.5/i18n/fr-FR.json'
       },
   }
 
   this.getEtudiants();
+
+  this.classeService.getClasseList()
+  .subscribe(classes => {
+    this.listClasse = classes;
+  });
+
 }
   
 
@@ -66,6 +79,11 @@ deleteEtudiant(idEtudiant: number){
   )
  
 } 
+
+// Methode pour editer un etudiant
+noteEtudiant(idEtudiant: number){
+  this.router.navigate(['note-etudiant', idEtudiant]);
+}
 
 
 

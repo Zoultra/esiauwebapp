@@ -31,6 +31,12 @@ import { FormulaireSaisieComponent } from './pages/page-note/formulaire-saisie/f
 import { CreateProfComponent } from './pages/page-prof/create-prof/create-prof.component';
 import { ListProfComponent } from './pages/page-prof/list-prof/list-prof.component';
 import { UpdateProfComponent } from './pages/page-prof/update-prof/update-prof.component';
+import { NoteEtudiantComponent } from './pages/page-etudiant/note-etudiant/note-etudiant.component'
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { CreateDepartementComponent } from './pages/page-departement/create-departement/create-departement.component';
+import { ListDepartementComponent } from './pages/page-departement/list-departement/list-departement.component';
+import { UpdateDepartementComponent } from './pages/page-departement/update-departement/update-departement.component';
+import { ProfMatiereComponent } from './pages/page-prof/prof-matiere/prof-matiere.component';
 
 
 
@@ -60,7 +66,12 @@ import { UpdateProfComponent } from './pages/page-prof/update-prof/update-prof.c
     FormulaireSaisieComponent,
     CreateProfComponent,
     ListProfComponent,
-    UpdateProfComponent 
+    UpdateProfComponent,
+    NoteEtudiantComponent,
+    CreateDepartementComponent,
+    ListDepartementComponent,
+    UpdateDepartementComponent,
+    ProfMatiereComponent 
  
    
   ],
@@ -71,7 +82,8 @@ import { UpdateProfComponent } from './pages/page-prof/update-prof/update-prof.c
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgToastModule
+    NgToastModule,
+    Ng2SearchPipeModule
 
   ],
   providers: [],

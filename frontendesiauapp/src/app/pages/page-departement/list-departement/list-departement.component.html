@@ -1,58 +1,41 @@
 <div class="col">
     <div class="row m-3">
-
         <div class="col-md-8 p-0">
-            <h1>Liste des Matières</h1>
+            <h1>Liste des Departements</h1>
         </div>
         <div class="col-md-3">
             <div class="row">
                 <div class="col-md-4">
                     <button type="button" (click)="reloadPage()" class="btn btn-warning">Actualiser</button>
                 </div>
-
                 <div class="col-md-4">
                     <button type="button" class="btn btn-success">Exporter</button>
                 </div>
                 <div class="col-md-4">
-                    <button type="button" class="btn btn-primary" routerLink="/create-matiere">Nouveau</button>
+                    <button type="button" class="btn btn-primary" routerLink="/create-departement">Nouveau</button>
                 </div>
             </div>
-
         </div>
     </div>
     <div class="row m-3">
-
-        <table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+        <table datatable [dtOptions]="dtOptions" class="table table-striped table-bordered table-sm row-border hover">
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Nom </th>
-                    <th>UE</th>
+                    <th>Nom département </th>
                     <th>Action</th>
-
-
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let matiere of listMatieres">
-
-                    <td> {{ matiere.idMatiere }} </td>
-                    <td> {{ matiere.nomMatiere }} </td>
-                    <td> {{ matiere.ue.nomUe}} </td>
-
-
+                <tr *ngFor="let departement of departements">
+                    <td> {{ departement.idDepartement }} </td>
+                    <td> {{ departement.nomDepartement }}</td>
                     <td>
-                        <button (click)="updateMatiere(matiere.idMatiere)" class="btn btn-info"> Modifier</button>
-                        <button (click)="deleteMatiere(matiere.idMatiere)" class="btn btn-danger" style="margin-left: 10px"> Supprimer</button>
-
+                        <button (click)="updateDepartement(departement.idDepartement)" class="btn btn-info"> Modifier</button>
+                        <button (click)="deleteDepartement(departement.idDepartement)" class="btn btn-danger" style="margin-left: 10px"> Supprimer</button>
                     </td>
                 </tr>
-
             </tbody>
         </table>
     </div>
-
-
-
-
 </div>

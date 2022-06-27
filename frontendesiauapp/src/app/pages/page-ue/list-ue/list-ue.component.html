@@ -26,8 +26,8 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Nom </th>
-
+                    <th>Nom UE</th>
+                    <th>Departement </th>
                     <th>Action</th>
 
 
@@ -38,14 +38,12 @@
 
                     <td> {{ ue.idUe }} </td>
                     <td> {{ ue.nomUe }} </td>
-
+                    <td> {{ ue.departement.nomDepartement}} </td>
                     <td>
                         <button (click)="updateUe(ue.idUe)" class="btn btn-info"> Modifier</button>
                         <button (click)="deleteUe(ue.idUe)" class="btn btn-danger" style="margin-left: 10px"> Supprimer</button>
-
                     </td>
                 </tr>
-
             </tbody>
         </table>
     </div>

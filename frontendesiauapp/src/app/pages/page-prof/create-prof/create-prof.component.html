@@ -30,6 +30,24 @@
                     </div>
                     <div class="row">
                         <div class="col">
+                            <label for="exampleInputEmail1">Departement(Filière) :</label>
+                            <select class="form-select" name="departement" [(ngModel)]="departementDto.idDepartement">
+                                <option [ngValue]="null" disabled selected >Selectionner un departement</option>
+                                <option  *ngFor="let departement of departements" value="{{departement.idDepartement}}"> {{departement.nomDepartement}}</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="exampleInputEmail1">Categorie :</label>
+                            <select class="form-select" name="categorie" [(ngModel)]="prof.categorie">
+                                <option value="null" disabled selected >Selectionner un departement</option>
+                                <option value="Enseignant Permanentt" >Enseignant Permennant</option>
+                                <option value="Enseignant non Permanentt" >Enseignant non permennant</option>
+                             </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
                             <label for="exampleInputEmail1">Téléphone</label>
                             <input type="text" class="form-control" aria-describedby="emailHelp" [(ngModel)]="prof.telProf" name="nomEtudiant" placeholder="Entrez le numéro de téléphone">
                         </div>

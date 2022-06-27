@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { Matiere } from 'src/app/composants/models/matiere';
-import { MaitereService } from '../../../composants/services/maitere.service';
+import { MatiereService } from '../../../composants/services/matiere.service';
 
 @Component({
   selector: 'app-update-matiere',
@@ -21,7 +21,7 @@ export class UpdateMatiereComponent implements OnInit {
     private toast: NgToastService,
     private router: Router,  
     private route: ActivatedRoute,
-    private matiereService: MaitereService
+    private matiereService: MatiereService
     ) { }
 
   ngOnInit(): void {

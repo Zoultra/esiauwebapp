@@ -6,7 +6,7 @@ import { Matiere } from '../models/matiere';
 @Injectable({
   providedIn: 'root'
 })
-export class MaitereService {
+export class MatiereService {
   private baseURL = "http://localhost:9201/backendesiauapp/v1/matiere";
   constructor(private httpClient: HttpClient) { }
 

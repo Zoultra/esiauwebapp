@@ -3,7 +3,7 @@ import { UE } from 'src/app/composants/models/ue';
 import { Matiere } from '../../../composants/models/matiere';
 import { UeService } from '../../../composants/services/ue.service';
 import { Router } from '@angular/router';
-import { MaitereService } from '../../../composants/services/maitere.service';
+import { MatiereService } from '../../../composants/services/matiere.service';
 import { NgToastService } from 'ng-angular-popup';
 
 @Component({
@@ -19,7 +19,7 @@ export class CreateMatiereComponent implements OnInit {
 
   ueDto : any = {}
 
-  constructor(private ueService : UeService, private matiereService : MaitereService, private router : Router, private toast: NgToastService) { }
+  constructor(private ueService : UeService, private matiereService : MatiereService, private router : Router, private toast: NgToastService) { }
 
   ngOnInit(): void {
     this.ueService.getUeList()

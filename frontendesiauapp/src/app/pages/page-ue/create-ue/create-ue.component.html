@@ -7,19 +7,18 @@
             <form (ngSubmit)="onSubmit()">
                 <div class="card-body">
                     <div class="row">
-
                         <div class="col">
                             <label for="exampleInputEmail1">Nom UE</label>
                             <input type="text" class="form-control" aria-describedby="emailHelp" [(ngModel)]="ue.nomUe" name="nomUe" placeholder="Entrez le nom">
                         </div>
+                        <div class="col">
+                            <label for="exampleInputEmail1">Departement(Filière) :</label>
+                            <select class="form-select" name="departement" [(ngModel)]="departementDto.idDepartement">
+                                <option [ngValue]="null" disabled selected >Selectionner un departement</option>
+                                <option  *ngFor="let departement of departements" value="{{departement.idDepartement}}"> {{departement.nomDepartement}}</option>
+                            </select>
+                        </div>
                     </div>
-
-
-
-                    <div class="row">
-
-                    </div>
-
                     <div class="row">
                         <div class="mb-0 mt-3  d-flex justify-content-md-end">
                             <button type="button" class="btn btn-danger" [routerLink]="['/list-ue']">Annuler</button>&nbsp;&nbsp;

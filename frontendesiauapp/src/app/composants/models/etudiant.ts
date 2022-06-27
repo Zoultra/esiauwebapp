@@ -10,5 +10,6 @@ export class Etudiant {
     contactPere!: string;
     niveau!: string;
     classe!: string;
+    emailEtudiant!: string;
     
 }

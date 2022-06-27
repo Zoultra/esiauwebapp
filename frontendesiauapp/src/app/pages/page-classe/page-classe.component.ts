@@ -22,6 +22,7 @@ export class PageClasseComponent implements OnInit {
   toasts: any[] = [];
   exform:any;
   idClasse!: number;
+  
      
   classe: Classe = new Classe();
   
@@ -29,7 +30,7 @@ export class PageClasseComponent implements OnInit {
     
   listClasse: Array<any> = [];
   listNiv: Array<Niveau> = [];
-  
+  numero!:number
    
   niveauDto : any={};
   
@@ -39,14 +40,21 @@ export class PageClasseComponent implements OnInit {
     private router: Router,  private route: ActivatedRoute,
     private toast: NgToastService) { }
 
+
   ngOnInit(): void { 
-  
+    
+    
     this.dtOptions = 
     {
     pagingType: 'full_numbers',
     pageLength: 5,
     lengthMenu : [5, 10, 25, 100],
     processing: true,
+    
+    //scrollY: '200px',
+    stateSave: true,
+   // scrollCollapse: true,
+   // paging: false,
     language: {
       url: '//cdn.datatables.net/plug-ins/1.11.5/i18n/fr-FR.json'
     },
@@ -117,7 +125,15 @@ closeModal(){
 private getclasses() {
   this.classeService.getClasseList().subscribe(data => {
     this.listClasse = data;
-     console.log(data);
+     
+      
+      for( this.numero=1; this.numero<=data.length; this.numero++){
+           
+
+           console.log(this.numero);
+           
+      }
+     
 });
 }
 /* Methode pour recuperer la liste de tous les niveaux
@@ -180,4 +196,7 @@ console.log(this.classe);
 reloadPage(){
 window.location.reload();
 }
+// boucle
+  
+
 }

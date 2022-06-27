@@ -12,7 +12,8 @@ import { UeService } from '../../../composants/services/ue.service';
 export class ListUeComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   toasts: any[] = [];
-  listUes: Array<UE> = [];
+  listUes: Array<any> = [];
+  
   //listUes?: UE[];
   
 

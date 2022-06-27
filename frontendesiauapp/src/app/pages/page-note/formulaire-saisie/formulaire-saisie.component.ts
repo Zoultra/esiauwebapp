@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Note } from 'src/app/composants/models/note';
-import { MaitereService } from '../../../composants/services/maitere.service';
+import { MatiereService } from '../../../composants/services/matiere.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { NoteService } from '../../../composants/services/note.service';
@@ -18,12 +18,12 @@ export class FormulaireSaisieComponent implements OnInit {
   submitted = false
   listMatieres: Array<any>=[];
   matiereDto : any = {}
-  etudiantDto : any = {}
+  
   note : Note = new Note()
   etudiant : Etudiant = new Etudiant()
   idEtudiant!: number
 
-  constructor(private matiereService : MaitereService,
+  constructor(private matiereService : MatiereService,
     private formBuilder: FormBuilder, private router: Router,
     private toast: NgToastService, private noteService: NoteService,
     private route: ActivatedRoute,

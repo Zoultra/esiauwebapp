@@ -8,6 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class NoteService {
   private baseURL = "http://localhost:9201/backendesiauapp/v1/note";
+
+  private baseURL2 = "http://localhost:9201/backendesiauapp/v1/note/etudiant";
   constructor(private httpClient : HttpClient) { }
 
   
@@ -21,5 +23,10 @@ export class NoteService {
 
   deleteNote(idNote: number): Observable<Object>{
     return this.httpClient.delete(`${this.baseURL}/${idNote}`);
+  }
+
+  
+  getNoteListByEtudiant(idEtudiant: number): Observable<Note[]>{
+    return this.httpClient.get<Note[]>(`${this.baseURL2}/${idEtudiant}`);
   }
 }

@@ -1,0 +1,75 @@
+<div class="row m-3">
+    <div class="container my-container">
+        <div class="card">
+            <div class="card-header text-center">
+                <h3>Ajout de matières aux professeurs</h3>
+            </div>
+            <form (ngSubmit)="onSubmit()">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <label for="exampleInputEmail1">Classe</label>
+                            <select id="inputState" class="form-select" name="classe" [(ngModel)]="classeDto.idClasse">
+                            <option selected="selected"  [ngValue]="null" disabled>Choisir la classe</option>
+                            <option *ngFor="let classe of listClasse" value="{{classe.idClasse}}"> {{classe.nomClasse}} - {{classe.niveau.nomNiveau}} </option>
+                          </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="exampleInputEmail1">Matière:</label>
+                            <select class="form-select" name="matiere" [(ngModel)]="matiereDto.idMatiere">
+                                <option [ngValue]="null" disabled selected >Selectionner une matière</option>
+                                <option  *ngFor="let matiere of matieres" value="{{matiere.idMatiere}}"> {{matiere.nomMatiere}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="exampleInputEmail1">Professeur:</label>
+                            <select class="form-select" name="professeur" [(ngModel)]="profDto.idProf">
+                                <option [ngValue]="null" disabled selected >Selectionner un professeur</option>
+                                <option  *ngFor="let prof of profs" value="{{prof.idProf}}">{{prof.prenomProf}} - {{prof.nomProf}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="mb-0 mt-3  d-flex justify-content-md-end">
+                            <button type="button" class="btn btn-danger" [routerLink]="['/professeur-list']">Annuler</button>&nbsp;&nbsp;
+                            <button type="submit" class="btn btn-primary">
+                 <i class="fas fa-check"></i>Enregistrer 
+                </button>
+                        </div>
+                    </div>
+
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="row m-3">
+
+    <table class="table table-striped table-bordered table-sm row-border hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom </th>
+
+                <th>Action </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let prof of profs">
+                <td> {{ prof.idProf}} </td>
+                <td> {{ prof.nomProf }} </td>
+                <td>
+                    <button class="btn btn-info"> Modifier</button>
+                    <button class="btn btn-danger" style="margin-left: 10px"> Supprimer</button>
+
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>

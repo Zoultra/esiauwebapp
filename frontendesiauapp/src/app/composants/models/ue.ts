@@ -1,4 +1,5 @@
 export class UE {
     idUe!: number;
-    nomUe!: string
+    nomUe!: string;
+    departement!: string
 }
