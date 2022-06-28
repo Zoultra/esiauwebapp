@@ -13,7 +13,7 @@ import com.esiau.backendesiauapp.models.Note;
 public interface NoteService {
      
 	// Enregistrer une note pour un eleve dans une matiere
-	public Note saveNote(Note note);
+	  public Note saveNote(Note note);
 	
 	 // Liste de tous les Notes
 	   public	List<Note> getAllNotes();
