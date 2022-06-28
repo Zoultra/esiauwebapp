@@ -43,4 +43,10 @@ public class ProfesseurServiceImpl implements ProfesseurService{
 		professeurRepository.deleteById(idProf);
 	}
 
+	@Override
+	public Professeur findProfByIdentifiant(Integer idProf) {
+		// TODO Auto-generated method stub
+		return professeurRepository.findProfesseurById(idProf);
+	}
+
 }

@@ -3,6 +3,7 @@ package com.esiau.backendesiauapp.services;
 import java.util.List;
 import java.util.Optional;
 
+import com.esiau.backendesiauapp.models.Etudiant;
 import com.esiau.backendesiauapp.models.Professeur;
 
 public interface ProfesseurService {
@@ -26,4 +27,6 @@ public interface ProfesseurService {
 	// Supprimer un professeur
 	
 	void  deleteProfById(int idProf);
+	
+	public Professeur findProfByIdentifiant(Integer idProf);
 }

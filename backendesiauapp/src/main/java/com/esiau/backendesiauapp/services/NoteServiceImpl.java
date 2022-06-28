@@ -43,9 +43,9 @@ public class NoteServiceImpl implements NoteService {
 	}
 
 	@Override
-	public List<Note> findNoteByEtudiant(Classe classe, Etudiant etudiant, int examen) {
+	public List<Note> findNoteByEtudiant(Etudiant idEtudiant) {
 		// TODO Auto-generated method stub
-		return noteRepository.findNoteByEtudiant(classe,etudiant,examen);
+		return noteRepository.findNoteByEtudiant(idEtudiant);
 	}
 
 	 

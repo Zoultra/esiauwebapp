@@ -27,17 +27,17 @@ public class Matiere {
 	@Id
 	@GeneratedValue
 	@Column(name = "id_matiere")
-	  private int idMatiere;
+	private int idMatiere;
 	
 	@Column(name = "nom_matiere")  
 	private String nomMatiere;
 	
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne
     @JoinColumn(name = "id_ue", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
     private UE ue; 
 	
 	 @OneToMany(fetch = FetchType.LAZY, mappedBy = "matiere")
+	 @JsonIgnore
 	 List<Note> notes ;
+	 
 }

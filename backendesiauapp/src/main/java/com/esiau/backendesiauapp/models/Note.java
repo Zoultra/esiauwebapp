@@ -26,28 +26,26 @@ public class Note {
 	@Column(name = "id_note")
 	private int idNote;
 	@Column(name = "note_exam")
-	private Double noteExam;
+	private Double noteExamen;
 	@Column(name = "note_devoir")
 	private Double noteDevoir;
-	@Column(name = "remarque")
-	private String remarque;
-	@Column(name = "statut")
-	private String statut;
+	//@Column(name = "remarque")
+	//private String remarque;
+	//@Column(name = "statut")
+	//private String statut;
 	@Column(name = "examen")
-	private int examen;
-	@Column(name = "annee_scolaire")
-	private String anneeScolaire; 
+	private String examen;
+	//@Column(name = "annee_scolaire")
+	//private String anneeScolaire; 
 	
     
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne
     @JoinColumn(name = "idEtudiant", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
     private Etudiant etudiant; 
 	
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne
     @JoinColumn(name = "idMatiere", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIgnore
     private Matiere matiere; 
+    
+    
 }

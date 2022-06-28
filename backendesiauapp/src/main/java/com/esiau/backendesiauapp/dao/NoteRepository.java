@@ -12,12 +12,12 @@ import com.esiau.backendesiauapp.models.Matiere;
 import com.esiau.backendesiauapp.models.Note;
 
 public interface NoteRepository extends JpaRepository  <Note, Integer>{
-      
+    
 	@Query("select n from Note n where n.etudiant.classe=:x and n.matiere=:y")                                        
     List<Note> findParClasseMatiere(@Param("x") Classe classe,@Param("y") Matiere matiere);
 	
-	@Query("select n from Note n where n.etudiant.classe=:x and n.etudiant=:y and n.examen=:z")                                        
-    List<Note> findNoteByEtudiant(@Param("x") Classe classe,@Param("y") Etudiant etudiant, @Param("z") int examen);
+	@Query("select n from Note n where n.etudiant=:x")                                        
+    List<Note> findNoteByEtudiant(@Param("x") Etudiant etudiant);
 	
 	
 } 

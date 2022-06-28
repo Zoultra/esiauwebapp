@@ -23,8 +23,8 @@ public interface NoteService {
 	   
 	  // Lister les notes par classe et par matiere des etudiants
 	    
-	    List<Note> findNoteByClasseEtMatiere(Classe classe, Matiere matiere);
+	   List<Note> findNoteByClasseEtMatiere(Classe classe, Matiere matiere);
 	  // Liste des notes d'un eleve dans chaque matiere
-	   List <Note> findNoteByEtudiant(Classe classe, Etudiant etudiant, int examen);
+	   List<Note> findNoteByEtudiant(Etudiant etudiant);
 	
 }

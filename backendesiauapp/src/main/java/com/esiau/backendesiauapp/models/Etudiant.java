@@ -12,6 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor; 
@@ -60,6 +63,9 @@ public class Etudiant  {
 	
 	@Column(name="id_inscription")
 	private int idInscription;
+	
+	@Column(name="email_etudiant")
+	private String emailEtudiant;
     
 
     @ManyToOne
@@ -71,8 +77,14 @@ public class Etudiant  {
    // @JoinColumn(name = "niveau_id", nullable = false)
    // private Niveau niveau; 
     
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "etudiant")
+    @OneToMany(mappedBy="etudiant", fetch = FetchType.LAZY)
+    @JsonIgnore
     List<Note> notes ;
+    
+    @OneToMany(mappedBy="etudiant", fetch = FetchType.LAZY)
+    @JsonIgnore
+    List<Paiement> paiement ;
+    
 	 
 	 
 	 

@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.esiau.backendesiauapp.models.Classe;
@@ -20,6 +22,9 @@ import com.esiau.backendesiauapp.services.MatiereService;
 import com.esiau.backendesiauapp.services.NoteService;
 
 @RestController
+
+@CrossOrigin(origins="http://localhost:4200")
+@RequestMapping("/backendesiauapp/v1/")
 public class NoteController {
     
 	@Autowired
@@ -38,7 +43,7 @@ public class NoteController {
 				}
 
 		//	Web service pour afficher tous les Notes
-				 @GetMapping("/notes")
+				 @GetMapping("/note")
 			     public Iterable<Note> getAllNotes() {
 				return noteService.getAllNotes();
 				}   
@@ -54,8 +59,8 @@ public class NoteController {
 							return null;
 						}
 }
-		// ------------------- recuperer les notes par classe et matiere----------------------------------------
-		    @GetMapping("/matiere/notes/{nomClasse}/{idMatiere}")
+		/* ------------------- recuperer les notes par classe et matiere----------------------------------------*/
+		    @GetMapping("/note/{nomClasse}/{idMatiere}")
 				public  List<Note> findNoteByClasseEtMatiere(@PathVariable("nomClasse") final String nomClasse,@PathVariable("idMatiere") final Integer idMatiere) {
 		    	 Classe classe =classeService.findByNom(nomClasse);
 		    	Matiere matiere =matiereService.findMatiereByIdentifiant(idMatiere);
@@ -65,12 +70,12 @@ public class NoteController {
 			 
 		 // ------------------- recuperer les notes d'un etudiant par matiere ----------------------------------------	
 			
-		 // ------------------- recuperer les notes d'un etudiant dans chaque matiere d'une semestre----------------------------------------
-		    @GetMapping("/matieres/notes/{nomClasse}/{idEtudiant}/{examen}")
-			public  List<Note> findNoteByEtudiant(@PathVariable("nomClasse") final String nomClasse,@PathVariable("idEtudiant") final Integer idEtudiant,@PathVariable("examen") final Integer examen) {
-	    	 Classe classe =classeService.findByNom(nomClasse);
+		 /* ------------------- recuperer les notes d'un etudiant dans chaque matiere d'une semestre------------*/
+		    @GetMapping("/note/etudiant/{idEtudiant}")
+			public  List<Note> findNoteByEtudiant(@PathVariable("idEtudiant") final Integer idEtudiant) {
+	    	// Classe classe =classeService.findByNom(nomClasse);
 	    	Etudiant etudiant =etudiantService.findEtudiantByIdentifiant(idEtudiant);
-	    	 List<Note> notes = noteService.findNoteByEtudiant(classe,etudiant,examen);
+	    	 List<Note> notes = noteService.findNoteByEtudiant(etudiant);
 					return notes;
 		 }
 		 // ------------------- Releve d'un eleve--------------		

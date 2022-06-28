@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.esiau.backendesiauapp.models.Classe;
 import com.esiau.backendesiauapp.models.Etudiant;
-import com.esiau.backendesiauapp.models.Niveau;
 import com.esiau.backendesiauapp.services.ClasseService;
 import com.esiau.backendesiauapp.services.EtudiantService;
 import com.esiau.backendesiauapp.services.NiveauService;
@@ -34,10 +33,7 @@ public class EtudiantController {
   
   @Autowired
   private ClasseService classeService;
-  
-  @Autowired
-  private NiveauService niveauService;
-  
+   
   
  
   @PostMapping("/etudiants")
@@ -76,6 +72,11 @@ public class EtudiantController {
 			String telephone = etudiant.getTelEtudiant();
 			if(telephone != null) {
 				currentEtudiant.setTelEtudiant(telephone);
+			}
+			
+			String emailEtudiant = etudiant.getEmailEtudiant();
+			if(emailEtudiant != null) {
+				currentEtudiant.setEmailEtudiant(emailEtudiant);
 			}
 			
 			String prenom_pere = etudiant.getPrenomPere();

@@ -7,8 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -17,24 +15,23 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 @Entity
-@Table(name = "ue")
+@Table(name = "departement")
 @Data
-public class UE {
+public class Departement {
 	
 	@Id
 	@GeneratedValue
-	@Column(name = "id_ue")
-	private int idUe;
-    
-	@Column(name = "nom_ue")
-	private String nomUe;
+	@Column(name="id_departement")
+	private int idDepartement;
+	@Column(name="nom_departement")
+	private String nomDepartement;
 	
-	@OneToMany(mappedBy = "ue",fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "departement",fetch = FetchType.LAZY)
 	@JsonIgnore
-	private List<Matiere> matieres ;
+	private List<UE> ues ;
 	
+	@OneToMany(mappedBy = "departement",fetch = FetchType.LAZY)
+	@JsonIgnore
+	private List<Professeur> professeurs ;
 
-    @ManyToOne
-    @JoinColumn(name = "departement_id", nullable = false)
-    private Departement departement; 
 }

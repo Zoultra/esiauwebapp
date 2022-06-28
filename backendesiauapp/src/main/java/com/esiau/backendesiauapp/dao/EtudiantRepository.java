@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.esiau.backendesiauapp.models.Classe;
 import com.esiau.backendesiauapp.models.Etudiant;
+import com.esiau.backendesiauapp.models.Matiere;
 import com.esiau.backendesiauapp.models.Niveau;
  
 @Repository
@@ -21,4 +22,7 @@ public interface EtudiantRepository extends JpaRepository <Etudiant, Integer>{
 	/*@Query("select e from Etudiant e where e.niveau=:x ")    
 	List<Etudiant> findEtudianttParNiveau(@Param("x") Niveau niveau);
 	*/
+	
+	@Query("select m from Etudiant m where m.idEtudiant=:x ")                                        
+	Etudiant findEtudiantById(@Param("x") Integer idEtudiant);
 }

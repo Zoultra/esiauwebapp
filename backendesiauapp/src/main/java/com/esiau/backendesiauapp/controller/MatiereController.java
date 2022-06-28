@@ -3,18 +3,23 @@ package com.esiau.backendesiauapp.controller;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.esiau.backendesiauapp.models.Matiere;
 import com.esiau.backendesiauapp.services.MatiereService;
  
 @RestController
+
+@CrossOrigin(origins="http://localhost:4200")
+@RequestMapping("/backendesiauapp/v1/")
 public class MatiereController {
    
 	@Autowired
@@ -27,7 +32,7 @@ public class MatiereController {
 				}
 	     
 			// Web service pour afficher tous les matieres
-			 @GetMapping("/matieres")
+			 @GetMapping("/matiere")
 		     public Iterable<Matiere> getAllMatieres() {
 			return matiereService.getAllMatieres();
 			}   
@@ -67,9 +72,9 @@ public class MatiereController {
 
 			 }
 			 
-			// Web service pour supprimer une UE
-			 @DeleteMapping("/matiere/{idUe}")
-				public void deleteMatiereById(@PathVariable("idUe") final int idMatiere) {
+			// Web service pour supprimer une matiere
+			 @DeleteMapping("/matiere/{idMatiere}")
+				public void deleteMatiereById(@PathVariable("idMatiere") final int idMatiere) {
 				 matiereService.deleteMatiereById(idMatiere);
 				}
 }

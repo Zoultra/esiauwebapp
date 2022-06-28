@@ -1,6 +1,7 @@
 package com.esiau.backendesiauapp.models;
  
 
+import java.io.Serializable;
 import java.util.List;
 
 
@@ -26,9 +27,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data 
-public class Classe  {
+public class Classe  implements Serializable {
 	 
-	
+	 
 	@Id
 	@GeneratedValue
 	@Column(name="idClasse")

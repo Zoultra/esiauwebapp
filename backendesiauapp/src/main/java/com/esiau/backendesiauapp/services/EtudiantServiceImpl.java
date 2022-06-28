@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.esiau.backendesiauapp.dao.EtudiantRepository;
 import com.esiau.backendesiauapp.models.Classe;
 import com.esiau.backendesiauapp.models.Etudiant;
-import com.esiau.backendesiauapp.models.Niveau;
 
 
 @Service
@@ -71,7 +70,7 @@ public class EtudiantServiceImpl implements EtudiantService{
 	@Override
 	public Etudiant findEtudiantByIdentifiant(Integer idEtudiant) {
 		// TODO Auto-generated method stub
-		return etudiantRepository.getById(idEtudiant);
+		return etudiantRepository.findEtudiantById(idEtudiant);
 	}
  
 	 
