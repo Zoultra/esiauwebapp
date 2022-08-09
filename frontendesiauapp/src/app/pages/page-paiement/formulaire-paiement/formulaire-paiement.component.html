@@ -1,0 +1,36 @@
+<div class="row m-5">
+    <div class="container my-container">
+        <div class="card">
+            <div class="card-header text-center">
+                <h3>Saisie de paiement pour: {{etudiant.prenomEtudiant}} - {{etudiant.nomEtudiant}} </h3>
+            </div>
+            <form (ngSubmit)="onSubmit()">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <label for="exampleInputEmail1">Date</label>
+                            <input type="date" class="form-control" aria-describedby="emailHelp" [(ngModel)]="paiement.datePaiement" name="datePaiement" placeholder="Entrez la date">
+                        </div>
+                        <div class="col">
+                            <label for="exampleInputEmail1">Montant</label>
+                            <input type="number" class="form-control" aria-describedby="emailHelp" [(ngModel)]="paiement.montantPaiement" name="montantPaiement" placeholder="Entrez le montant">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="mb-0 mt-3  d-flex justify-content-md-end">
+                            <button type="button" class="btn btn-danger" [routerLink]="['/ajouter-paiement']">Annuler</button>&nbsp;&nbsp;
+                            <button type="submit" class="btn btn-primary">
+                 <i class="fas fa-check"></i>Enregistrer 
+                </button>
+                        </div>
+                    </div>
+
+
+                </div>
+            </form>
+        </div>
+        <br/>
+        <app-list-paiement></app-list-paiement>
+    </div>
+</div>

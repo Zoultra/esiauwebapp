@@ -42,13 +42,7 @@ export class MenuComponent implements OnInit {
         titre:'Gestion des niveaux',
         icon:'fas fa-edit',
         url:'niveau'
-      },
-      {
-        id:'12',
-        titre:'Niveau / Etudiants',
-        icon:'fa fa-info-circle',
-        url:'niveauEetudiant'
-      }
+      } 
     ]
   },
   {
@@ -62,13 +56,7 @@ export class MenuComponent implements OnInit {
         titre:'Gestion des classes',
         icon:'fas fa-edit',
         url:'classe'
-      },
-      {
-        id:'32',
-        titre:'Classes / Etudiants',
-        icon:'fa fa-info-circle',
-        url:''
-      }
+      } 
     ]
   },
   {
@@ -82,13 +70,27 @@ export class MenuComponent implements OnInit {
         titre:'Gestion des etudiants',
         icon:'fas fa-edit',
         url:'list-etudiant'
-      },
+      } 
+    ]
+  },
+  {
+    id:'4bis',
+    titre:'Paiements',
+    icon:'fa fa-users',
+    url:'',
+    sousMenu: [
       {
-        id:'42',
-        titre:'Etudiant / Paiements',
+        id:'4bis1',
+        titre:'Gestion des Paiements',
+        icon:'fas fa-edit',
+        url:'ajouter-paiement'
+      }/*,
+      {
+        id:'4bis2',
+        titre:'Situation des Paiements',
         icon:'fa fa-info-circle',
-        url:''
-      }
+        url:'situation-paiement'
+      }*/
     ]
   },
   {
@@ -102,13 +104,13 @@ export class MenuComponent implements OnInit {
         titre:'Gestion des departements',
         icon:'fas fa-edit',
         url:'list-departement'
-      },
+      }/*,
       {
         id:'52',
         titre:'UE / departements',
         icon:'fa fa-info-circle',
         url:''
-      }
+      }*/
     ]
   },
   {
@@ -122,13 +124,13 @@ export class MenuComponent implements OnInit {
         titre:'Gestion des UEs',
         icon:'fas fa-edit',
         url:'list-ue'
-      },
+      }/*,
       {
         id:'62',
         titre:'UE / Matieres',
         icon:'fa fa-info-circle',
         url:''
-      }
+      }*/
     ]
   },
   {
@@ -142,13 +144,13 @@ export class MenuComponent implements OnInit {
         titre:'Gestion des matières',
         icon:'fa fa-edit',
         url:'list-matiere'
-      },
+      }/*,
       {
         id:'72',
         titre:'Matières / Examens',
         icon:'fa fa-info-circle',
         url:''
-      }
+      }*/
     ]
   },
   {
@@ -188,6 +190,26 @@ export class MenuComponent implements OnInit {
         titre:'Professeurs / Matières',
         icon:'fa fa-info-circle',
         url:'prof-matiere'
+      }
+    ]
+  },
+  {
+    id:'99',
+    titre:'Personnels',
+    icon:'fas fa-user-secret',
+    url:'',
+    sousMenu: [
+      {
+        id:'991',
+        titre:'Gestion des personnels',
+        icon:'fa fa-edit',
+        url:'list-personnel'
+      },
+      {
+        id:'992',
+        titre:'Personnel / Salaire',
+        icon:'fa fa-info-circle',
+        url:'personnel-salaire'
       }
     ]
   },

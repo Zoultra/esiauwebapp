@@ -11,6 +11,7 @@ export class ProfService {
   private baseURL = "http://localhost:9201/backendesiauapp/v1/professeur";
   private baseURL2 = "http://localhost:9201/backendesiauapp/v1/professeur/addmatiere";
   private baseURL3 = "http://localhost:9201/backendesiauapp/v1/professeur/matiere";
+  private baseURL4 = "http://localhost:9201/backendesiauapp/v1/professeur/matieres";
   constructor(private httpClient: HttpClient) { }
 
   
@@ -38,5 +39,12 @@ export class ProfService {
   }
   findMatiereForProf(idProf: number): Observable<ProfesseurMatiere[]>{
     return this.httpClient.get<ProfesseurMatiere[]>(`${this.baseURL3}/${idProf}`);
+  }
+  getAllsMatiereProf(): Observable<ProfesseurMatiere[]>{
+    return this.httpClient.get<ProfesseurMatiere[]>(`${this.baseURL4}`)
+  }
+
+  deleteProfMatiereById(idProfMatiere: number): Observable<Object>{
+    return this.httpClient.delete(`${this.baseURL3}/${idProfMatiere}`);
   }
 }

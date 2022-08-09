@@ -1,0 +1,80 @@
+<div class="row m-3">
+    <div class="container my-container">
+        <div class="card">
+            <div class="card-header text-center mb-3">
+
+                <div class="d-flex justify-content-between">
+                    <div></div>
+                    <div>
+                        <h3> Etat de salaire </h3>
+                        <h5> {{personnel.prenomPersonnel}} {{personnel.nomPersonnel}} - {{personnel.emploi}}</h5>
+                    </div>
+                    <div>
+                        <button type="button" routerLink="/personnel-salaire" class="btn btn-primary"><i class="fa fa-close"></i>&nbsp; Retour</button>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="md-3 pt-2 pb-2 pe-3 d-flex justify-content-md-end">
+            <label for="exampleInputEmail1 ">Mois</label>&nbsp;
+            <select style="width: 190px;" id="inputState" name="myFilterText" class="form-select" [(ngModel)]="myFilterText">
+      <option selected="selected" value="" >Tous les mois</option>
+      <option  value="Janvier"> Janvier </option>
+      <option  value="Fevrier"> Fevrier </option>
+      <option  value="Mars"> Mars </option>
+      <option  value="Avril"> Avril </option>
+      <option  value="Mais"> Mai </option>
+      <option  value="Juin"> Juin </option>
+      <option  value="Juillet"> Juillet </option>
+      <option  value="Aout"> Aout </option>
+      <option  value="Septembre"> Septembre </option>
+      <option  value="Octobre"> Octobre </option>
+      <option  value="Novembre"> Novembre </option>
+      <option  value="Décembre"> Décembre </option>
+      
+    </select>
+        </div>
+
+        <table class="table table-striped table-bordered" datatable [dtOptions]="dtOptions">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Date </th>
+                    <th>Mois </th>
+                    <th>Montant</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor=" let item of prets | filter:myFilterText ">
+                    <td> {{ item.idPret }} </td>
+                    <td> {{ item.datePret }} </td>
+                    <td> {{ item.mois}} </td>
+                    <td> {{ item.montantPret }} FCFA </td>
+
+                    <td>
+                        <button (click)="annulerPret(item.idPret)" class="btn btn-danger btn-xs "><i class="fa fa-trash "> &nbsp;Annuler</i></button>
+                    </td>
+
+                </tr>
+                <tr class="text-center">
+                    <td colspan="2 " class="text-center "><b>Total des prets</b></td>
+                    <td colspan="3"> <b>{{this.totalPret}} FCFA </b></td>
+                </tr>
+                <tr class="text-center">
+                    <td colspan="2"><b>Salaire net</b></td>
+                    <td colspan="3"> <b>{{this.personnel.montantSalaire - this.totalPret}} FCFA </b></td>
+                </tr>
+                <tr class="text-center">
+                    <td colspan="2"><b>Salaire brut</b></td>
+                    <td colspan="3"> <b>{{this.personnel.montantSalaire}} FCFA </b></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</div>

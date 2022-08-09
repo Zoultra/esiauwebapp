@@ -1,0 +1,68 @@
+<div class="row m-3">
+    <div class="container my-container">
+        <div class="card">
+            <div class="card-header text-center">
+                <h3>Modification de Personnel </h3>
+            </div>
+
+            <form (ngSubmit)="onSubmit()">
+                <div class="card-body">
+
+                    <div class="row">
+                        <div class="col">
+                            <label for="exampleInputEmail1">Nom</label>
+                            <input type="text" class="form-control" aria-describedby="emailHelp" [(ngModel)]="personnel.nomPersonnel" name="nomPersonnel" placeholder="Entrez le nom">
+                        </div>
+                        <div class="col">
+                            <label for="exampleInputEmail1">Prénom</label>
+                            <input type="text" class="form-control" aria-describedby="emailHelp" [(ngModel)]="personnel.prenomPersonnel" name="prenomPersonnel" placeholder="Entrez le prénom">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="exampleInputEmail1">Téléphone</label>
+                            <input type="text" class="form-control" aria-describedby="emailHelp" [(ngModel)]="personnel.telPersonnel" name="telPersonnel" placeholder="Entrez le contact">
+                        </div>
+                        <div class="col">
+                            <label for="exampleInputEmail1">E-Mail</label>
+                            <input type="text" class="form-control" aria-describedby="emailHelp" [(ngModel)]="personnel.emailPersonnel" name="emailPersonnel" placeholder="Entrez l'E-mail">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="exampleInputEmail1">Salaire brut</label>
+                            <input type="text" class="form-control" aria-describedby="emailHelp" [(ngModel)]="personnel.montantSalaire" name="montantSalaire" placeholder="Entrez le salaire">
+                        </div>
+                        <div class="col">
+                            <label for="exampleInputEmail1">Poste</label>
+                            <input type="text" class="form-control" aria-describedby="emailHelp" [(ngModel)]="personnel.emploi" name="emploi" placeholder="Entrez le poste occupé">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <label for="exampleInputEmail1">Mode de Paiement</label>
+                            <input type="text" class="form-control" aria-describedby="emailHelp" [(ngModel)]="personnel.modePaiement" name="modePaiement" placeholder="Entrez le mode de paiement">
+                        </div>
+                        <div class="col">
+                            <label for="exampleInputEmail1">Catégorie</label>
+                            <input type="text" class="form-control" aria-describedby="emailHelp" [(ngModel)]="personnel.categoriePersonnel" name="categoriePersonnel" placeholder="Entrez la Catégorie">
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="mb-0 mt-3  d-flex justify-content-md-end">
+                            <button type="button" class="btn btn-danger" [routerLink]="['/list-personnel']">Annuler</button>&nbsp;&nbsp;
+                            <button type="submit" class="btn btn-primary">
+                 <i class="fas fa-check"></i>Mettre à jour
+                </button>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

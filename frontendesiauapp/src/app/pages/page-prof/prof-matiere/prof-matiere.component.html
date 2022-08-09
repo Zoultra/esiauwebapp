@@ -35,7 +35,7 @@
                     </div>
                     <div class="row">
                         <div class="mb-0 mt-3  d-flex justify-content-md-end">
-                            <button type="button" class="btn btn-danger" [routerLink]="['/professeur-list']">Annuler</button>&nbsp;&nbsp;
+                            <button type="button" class="btn btn-warning" [routerLink]="['/professeur-list']">Retour</button>&nbsp;&nbsp;
                             <button type="submit" class="btn btn-primary">
                  <i class="fas fa-check"></i>Enregistrer 
                 </button>
@@ -50,22 +50,25 @@
 </div>
 <div class="row m-3">
 
-    <table class="table table-striped table-bordered table-sm row-border hover">
+    <table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions">
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Nom </th>
-
+                <th>Classe </th>
+                <th>Matiere </th>
+                <th>Professeur </th>
                 <th>Action </th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let prof of profs">
-                <td> {{ prof.idProf}} </td>
-                <td> {{ prof.nomProf }} </td>
+            <tr *ngFor="let item of matiereprofs">
+                <td> {{ item.idProfMatiere}} </td>
+                <td> {{ item.classe.nomClasse }} </td>
+                <td> {{ item.matiere.nomMatiere }} </td>
+                <td> {{ item.professeur.prenomProf }} - {{ item.professeur.nomProf }} - {{ item.professeur.specialite }} </td>
                 <td>
-                    <button class="btn btn-info"> Modifier</button>
-                    <button class="btn btn-danger" style="margin-left: 10px"> Supprimer</button>
+
+                    <button (click)="deleteMatiereProf(item.idProfMatiere)" class="btn btn-danger" style="margin-left: 10px"> Supprimer</button>
 
                 </td>
             </tr>

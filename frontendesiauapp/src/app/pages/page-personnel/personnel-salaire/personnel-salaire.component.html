@@ -1,0 +1,157 @@
+<div class="col">
+    <div class="row m-3">
+
+        <div class="col-md-8 p-0">
+            <h1>Gestion des salaires des employés</h1>
+        </div>
+
+    </div>
+
+
+
+
+    <div class="d-grid gap-3">
+
+        <div class="p-2 bg-light border  me-4 ms-4 ">
+            <div class="text-center">
+                <button type="button" data-bs-toggle="modal" [attr.data-bs-target]="'#pret'" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp;Prêt</button>
+            </div>
+        </div>
+        <div class="text-center">
+            <div class="p-2 bg-light border me-4 ms-4">
+                <button type="button" class="btn btn-success"><i class="fa fa-list"></i>&nbsp;Etat des salaires</button>
+                <br><br>
+                <div class="row">
+                    <div class="col-md-2">
+                        <a target="_blank" href="http://localhost/etat-salaire/index.php?mois=Janvier"> <button type="button" class="btn btn-warning"><i class="fa fa-list"></i>&nbsp;Janvier</button></a>
+                    </div>
+                    <div class="col-md-2">
+                        <a target="_blank" href="http://localhost/etat-salaire/index.php?mois=Fevrier"> <button type="button" class="btn btn-warning"><i class="fa fa-list"></i>&nbsp;Fevrier</button></a>
+                    </div>
+                    <div class="col-md-2">
+                        <a target="_blank" href="http://localhost/etat-salaire/index.php?mois=Mars"> <button type="button" class="btn btn-warning"><i class="fa fa-list"></i>&nbsp;Mars</button></a>
+                    </div>
+                    <div class="col-md-2">
+                        <a target="_blank" href="http://localhost/etat-salaire/index.php?mois=Avril"> <button type="button" class="btn btn-warning"><i class="fa fa-list"></i>&nbsp;Avril</button></a>
+                    </div>
+                    <div class="col-md-2">
+                        <a target="_blank" href="http://localhost/etat-salaire/index.php?mois=Mai"> <button type="button" class="btn btn-warning"><i class="fa fa-list"></i>&nbsp;Mai</button></a>
+                    </div>
+                    <div class="col-md-2">
+                        <a target="_blank" href="http://localhost/etat-salaire/index.php?mois=Juin"> <button type="button" class="btn btn-warning"><i class="fa fa-list"></i>&nbsp;Juin</button></a>
+                    </div>
+                    <br><br>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <a target="_blank" href="http://localhost/etat-salaire/index.php?mois=Juillet"> <button type="button" class="btn btn-warning"><i class="fa fa-list"></i>&nbsp;Juillet</button></a>
+                        </div>
+                        <div class="col-md-2">
+                            <a target="_blank" href="http://localhost/etat-salaire/index.php?mois=Aout"> <button type="button" class="btn btn-warning"><i class="fa fa-list"></i>&nbsp;Aout</button></a>
+                        </div>
+                        <div class="col-md-2">
+                            <a target="_blank" href="http://localhost/etat-salaire/index.php?mois=Septembre"> <button type="button" class="btn btn-warning"><i class="fa fa-list"></i>&nbsp;Septembre</button></a>
+                        </div>
+                        <div class="col-md-2">
+                            <a target="_blank" href="http://localhost/etat-salaire/index.php?mois=Octobre"> <button type="button" class="btn btn-warning"><i class="fa fa-list"></i>&nbsp;Octobre</button></a>
+                        </div>
+                        <div class="col-md-2">
+                            <a target="_blank" href="http://localhost/etat-salaire/index.php?mois=Novembre"> <button type="button" class="btn btn-warning"><i class="fa fa-list"></i>&nbsp;Novembre</button></a>
+                        </div>
+                        <div class="col-md-2">
+                            <a target="_blank" href="http://localhost/etat-salaire/index.php?mois=Decembre"> <button type="button" class="btn btn-warning"><i class="fa fa-list"></i>&nbsp;Decembre</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="pret" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-lg ">
+            <form (ngSubmit)="onSubmit()">
+                <div class=" modal-content ">
+                    <div class="modal-header ">
+                        <h5 class="modal-title" id="exampleModalLabel ">Enrégistrement de Prêt :</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body ">
+                        <div class="container ">
+                            <div class="col">
+                                <label for="exampleInputEmail1">Employé :</label>
+                                <select class="form-select" name="personnel" [(ngModel)]="personnelDto.idPersonnel">
+                                    <option [ngValue]="null" disabled selected >Selectionner un employé</option>
+                                    <option  *ngFor="let personnel of personnels" value="{{personnel.idPersonnel}}">{{personnel.prenomPersonnel}} {{personnel.nomPersonnel}} - {{personnel.emploi}}</option>
+        
+                                </select>
+                            </div>
+
+                            <div class="row ">
+                                <div class="col ">
+                                    <label for="exampleInputEmail1 ">Année</label>
+                                    <select id="inputState" class="form-select" name="annee" [(ngModel)]="pret.annee">
+                            <option selected="selected"  disabled>Choisir l'année</option>
+                            <option  value="2022"> 2022 </option>
+                            <option  value="2023"> 2023 </option>
+                            <option  value="2024"> 2024 </option>
+                            <option  value="2025"> 2025 </option>
+                            <option  value="2026"> 2026 </option>
+                            <option  value="2027"> 2027 </option>
+                            <option  value="2028"> 2028 </option>
+                            <option  value="2029"> 2039 </option>
+                            <option  value="2030"> 2030 </option>
+                          </select>
+                                </div>
+
+                            </div>
+                            <div class="row ">
+
+
+                                <div class="col ">
+                                    <label for="exampleInputEmail1 ">Mois</label>
+                                    <select id="inputState" class="form-select " name="mois" [(ngModel)]="pret.mois">
+                            <option selected="selected"  disabled>Choisir le mois</option>
+                            <option  value="Janvier">Janvier</option>
+                            <option  value="Fevrier"> Fevrier </option>
+                            <option  value="Mars"> Mars </option>
+                            <option  value="Avril"> Avril </option>
+                            <option  value="Mai"> Mai </option>
+                            <option  value="Juin"> Juin </option>
+                            <option  value="Juillet"> Juillet </option>
+                            <option  value="Aout"> Aout </option>
+                            <option  value="Septembre"> Septembre </option>
+                            <option  value="Octobre"> Octobre </option>
+                            <option  value="Novembre"> Novembre </option>
+                            <option  value="Décembre"> Décembre </option>
+                            
+                          </select>
+                                </div>
+
+                            </div>
+                            <div class="row ">
+                                <div class="col ">
+                                    <label for="exampleInputEmail1 ">Montant</label>
+                                    <input type="number" class="form-control " aria-describedby="emailHelp" [(ngModel)]="pret.montantPret" name="montantPret" placeholder="Entrez le montant ">
+                                </div>
+
+                            </div>
+                            <div class="row ">
+                                <div class="col ">
+                                    <label for="exampleInputEmail1 ">Date</label>
+                                    <input type="date" class="form-control " aria-describedby="emailHelp " [(ngModel)]="pret.datePret" name="datePret" placeholder="Entrez la date ">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer ">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Fermer</button>
+                        <button type="submit" class="btn btn-success"><i class="fas fa-save "></i>&nbsp;Ajouter</button>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

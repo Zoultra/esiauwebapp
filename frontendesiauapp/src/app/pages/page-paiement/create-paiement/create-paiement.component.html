@@ -1,20 +1,15 @@
 <div class="col">
     <div class="row m-3">
-
         <div class="col-md-8 p-0">
-            <h1>Gestion des notes</h1>
+            <h2>Paiement de Frais de Scolarité: Liste des etudiants</h2>
         </div>
         <div class="col-md-3">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-8">
                     <button type="button" (click)="reloadPage()" class="btn btn-warning">Actualiser</button>
                 </div>
 
-                <div class="col-md-4">
-                    <button type="button" class="btn btn-success">Exporter</button>
-                </div>
             </div>
-
         </div>
     </div>
     <div class="md-3 pe-3 d-flex justify-content-md-end">
@@ -25,8 +20,7 @@
           </select>
     </div>
     <div class="row m-3">
-
-        <table class="table table-striped table-bordered table-sm row-border hover">
+        <table class="table table-striped table-bordered" datatable [dtOptions]="dtOptions">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -34,28 +28,22 @@
                     <th>Prenom </th>
                     <th>Tel </th>
                     <th>Classe </th>
-                    <th>Note </th>
-
+                    <th>Payement</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let etudiant of listEtudiant  | filter:myFilterText">
-
+                <tr *ngFor="let etudiant of listEtudiant | filter:myFilterText">
                     <td> {{ etudiant.idEtudiant }} </td>
                     <td> {{ etudiant.nomEtudiant }} </td>
                     <td> {{ etudiant.prenomEtudiant }} </td>
                     <td> {{ etudiant.telEtudiant }} </td>
                     <td> {{ etudiant.classe.nomClasse }} - {{ etudiant.classe.niveau.nomNiveau }} </td>
                     <td>
-                        <button (click)="saisirNote(etudiant.idEtudiant)" class="btn btn-info"> Ajouter</button>
+                        <button (click)="ajouterPaiement(etudiant.idEtudiant)" class="btn btn-info"><i class="fa fa-plus"></i></button>
+                        <button (click)="consulterPaiement(etudiant.idEtudiant)" class="btn btn-warning" style="margin-left: 10px">  <i class="fa fa-eye"></i></button>
                     </td>
                 </tr>
-
             </tbody>
         </table>
     </div>
-
-
-
-
 </div>

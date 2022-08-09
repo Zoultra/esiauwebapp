@@ -2,12 +2,20 @@
     <div class="container my-container">
         <div class="card">
             <div class="card-header text-center">
-                <h3>Fiche d'enregistrement d'un etudiant </h3>
+                <h3>Fiche d'inscription d'un etudiant </h3>
             </div>
 
             <form (ngSubmit)="onSubmit()">
                 <div class="card-body">
+                    <br>
 
+                    <div class="row">
+                        <div class="text-center">
+                            <h5>Informations de l'Etudiant</h5>
+                        </div>
+
+                    </div>
+                    <br>
                     <div class="row">
                         <div class="col">
                             <label for="exampleInputEmail1">Nom</label>
@@ -33,19 +41,9 @@
                             <label for="exampleInputEmail1">Tel</label>
                             <input type="text" class="form-control" aria-describedby="emailHelp" [(ngModel)]="etudiant.telEtudiant" name="nomEtudiant" placeholder="Entrez le nom">
                         </div>
-                        <!--   <div class="col">
-                            <label for="exampleInputEmail1">Adresse</label>
-                            <input type="email" class="form-control" aria-describedby="emailHelp" name="nomEtudiant" placeholder="Entrez l'adresse">
-                        </div>-->
-                    </div>
-                    <div class="row">
                         <div class="col">
-                            <label for="exampleInputEmail1">Prénom du Père</label>
-                            <input type="text" class="form-control" aria-describedby="emailHelp" [(ngModel)]="etudiant.prenomPere" name="prenomPere" placeholder="Entrez le nom">
-                        </div>
-                        <div class="col">
-                            <label for="exampleInputEmail1">Tel du Père</label>
-                            <input type="email" class="form-control" aria-describedby="emailHelp" [(ngModel)]="etudiant.contactPere" name="telPere" placeholder="Entrez l'adresse">
+                            <label for="exampleInputEmail1">E-mail</label>
+                            <input type="email" class="form-control" aria-describedby="emailHelp" [(ngModel)]="etudiant.emailEtudiant" name="emailEtudiant" placeholder="Entrez l'adresse e-mail">
                         </div>
                     </div>
                     <div class="row">
@@ -57,17 +55,49 @@
                           </select>
                         </div>
 
-                        <div class="col">
-                            <label for="exampleInputEmail1">E-mail</label>
-                            <input type="email" class="form-control" aria-describedby="emailHelp" [(ngModel)]="etudiant.emailEtudiant" name="emailEtudiant" placeholder="Entrez l'adresse e-mail">
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="text-center">
+                            <h5>Informations du Responsable </h5>
                         </div>
+
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            <label for="exampleInputEmail1">Prénom du Père</label>
+                            <input type="text" class="form-control" aria-describedby="emailHelp" [(ngModel)]="etudiant.prenomPere" name="prenomPere" placeholder="Entrez le nom">
+                        </div>
+                        <div class="col">
+                            <label for="exampleInputEmail1">Tel du Père</label>
+                            <input type="email" class="form-control" aria-describedby="emailHelp" [(ngModel)]="etudiant.contactPere" name="telPere" placeholder="Entrez l'adresse">
+                        </div>
+
+                    </div>
+                    <br>
+
+                    <div class="row">
+                        <div class="text-center">
+                            <h5>Informations de Paiement </h5>
+                        </div>
+
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            <label for="exampleInputEmail1">Frais Scolaire</label>
+                            <input type="number" class="form-control" aria-describedby="emailHelp" [(ngModel)]="etudiant.fraisScolaire" name="fraisScolaire" placeholder="Entrez le nom">
+                        </div>
+
+
                     </div>
 
                     <div class="row">
                         <div class="mb-0 mt-3  d-flex justify-content-md-end">
                             <button type="button" class="btn btn-danger" [routerLink]="['/list-etudiant']">Annuler</button>&nbsp;&nbsp;
                             <button type="submit" class="btn btn-primary">
-                 <i class="fas fa-check"></i>Enregistrer 
+                  <i class = "fas fa-check"></i>Enregistrer
                 </button>
                         </div>
                     </div>

@@ -37,6 +37,17 @@ import { CreateDepartementComponent } from './pages/page-departement/create-depa
 import { ListDepartementComponent } from './pages/page-departement/list-departement/list-departement.component';
 import { UpdateDepartementComponent } from './pages/page-departement/update-departement/update-departement.component';
 import { ProfMatiereComponent } from './pages/page-prof/prof-matiere/prof-matiere.component';
+import { CreatePaiementComponent } from './pages/page-paiement/create-paiement/create-paiement.component';
+import { ListPaiementComponent } from './pages/page-paiement/list-paiement/list-paiement.component';
+import { UpdatePaiementComponent } from './pages/page-paiement/update-paiement/update-paiement.component';
+import { FormulairePaiementComponent } from './pages/page-paiement/formulaire-paiement/formulaire-paiement.component';
+import { SituationPaiementComponent } from './pages/page-paiement/situation-paiement/situation-paiement.component';
+import { CreatePersonnelComponent } from './pages/page-personnel/create-personnel/create-personnel.component';
+import { UpdatePersonnelComponent } from './pages/page-personnel/update-personnel/update-personnel.component';
+import { ListPersonnelComponent } from './pages/page-personnel/list-personnel/list-personnel.component';
+import { PersonnelSalaireComponent } from './pages/page-personnel/personnel-salaire/personnel-salaire.component';
+import { ListPretComponent } from './pages/page-personnel/list-pret/list-pret.component';
+
 
 
 
@@ -71,7 +82,17 @@ import { ProfMatiereComponent } from './pages/page-prof/prof-matiere/prof-matier
     CreateDepartementComponent,
     ListDepartementComponent,
     UpdateDepartementComponent,
-    ProfMatiereComponent 
+    ProfMatiereComponent,
+    CreatePaiementComponent,
+    ListPaiementComponent,
+    UpdatePaiementComponent,
+    FormulairePaiementComponent,
+    SituationPaiementComponent,
+    CreatePersonnelComponent,
+    UpdatePersonnelComponent,
+    ListPersonnelComponent,
+    PersonnelSalaireComponent,
+    ListPretComponent
  
    
   ],

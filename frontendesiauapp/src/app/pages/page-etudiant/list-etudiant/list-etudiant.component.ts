@@ -15,11 +15,13 @@ export class ListEtudiantComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
 
   listClasse: Array<any> = [];
-   
+  classeDto : any={}; 
+  idEtudiant!: number;
   listEtudiant: Array<Etudiant> = [];
   //listClasse: Array<Classe> = [];
   
- // etudiant: Etudiant = new Etudiant();
+  etudiant: Etudiant = new Etudiant();
+  etudiantDto : any={};
 
  toasts: any[] = [];
  myFilterText!:any
@@ -91,4 +93,20 @@ noteEtudiant(idEtudiant: number){
 reloadPage(){
   window.location.reload();
 }
+ 
+reinscription(idEtudiant: number): void{
+
+ this.idEtudiant =idEtudiant;
+  
+  this.etudiant.classe = this.classeDto;
+  
+  this.etudiantService.updateEtudiant(this.idEtudiant, this.etudiant).subscribe(data =>{
+    this.reloadPage()
+     this.toast.success({detail:"Mesage de reussite",summary:"Réinscription  effectuée avec succès",duration:4000});
+   },
+  error => { 
+   this.toast.error({detail:"Message d'erreur",summary:"Echec, réessayer encore",duration:5000});
+  })
+ 
+  }
 }

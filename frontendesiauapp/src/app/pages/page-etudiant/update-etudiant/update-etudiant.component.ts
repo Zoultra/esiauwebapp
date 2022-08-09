@@ -55,15 +55,11 @@ updateEtudiant(): void{
 
 this.etudiantService.updateEtudiant(this.idEtudiant, this.etudiant).subscribe(data =>{
   this.goToEtudiantList();
-    
    this.toast.success({detail:"Mesage de reussite",summary:"Etudiant modifié avec succès",duration:5000});
-   
-  
  },
 error => {
  this.errorMsg = error.error.errors
  ;
- 
  this.toast.error({detail:"Message d'erreur",summary:"Modification echoué, réessayer encore",duration:5000});
 })
 

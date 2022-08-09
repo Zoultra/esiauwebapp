@@ -11,5 +11,6 @@ export class Etudiant {
     niveau!: string;
     classe!: string;
     emailEtudiant!: string;
+    fraisScolaire!: number;
     
 }

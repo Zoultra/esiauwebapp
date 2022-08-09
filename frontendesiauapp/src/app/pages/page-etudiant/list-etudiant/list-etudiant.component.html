@@ -13,8 +13,8 @@
                 <div class="col-md-4">
                     <button type="button" class="btn btn-success">Exporter</button>
                 </div>
-                <div class="col-md-4">
-                    <button type="button" class="btn btn-primary" routerLink="/create-etudiant">Nouveau</button>
+                <div class="col-md-3">
+                    <button style="width: 200px;" type="button" class="btn btn-primary" routerLink="/create-etudiant">Nouvelle Inscription</button>
                 </div>
 
 
@@ -26,7 +26,7 @@
         <label class="pe-2">Classe</label>
         <select style="width: 160px ;" id="inputState" class="form-select" [(ngModel)]="myFilterText">
             <option value="">Toutes les classes</option>
-            <option *ngFor="let classe of listClasse" value="{{classe.idClasse}}"> {{classe.nomClasse}} - {{classe.niveau.nomNiveau}} </option>
+            <option *ngFor="let classe of listClasse" value="{{classe.nomClasse}}"> {{classe.nomClasse}} - {{classe.niveau.nomNiveau}} </option>
           </select>
     </div>
     <div class="row m-3">
@@ -40,7 +40,6 @@
                     <th>Tel </th>
                     <th>Classe </th>
                     <th>Notes</th>
-                    <th>Payement</th>
                     <th>Réinscription</th>
                     <th>Details</th>
                     <th>Action </th>
@@ -55,8 +54,50 @@
                     <td> {{ etudiant.telEtudiant }} </td>
                     <td> {{ etudiant.classe.nomClasse }} - {{ etudiant.classe.niveau.nomNiveau }} </td>
                     <td> <button (click)="noteEtudiant(etudiant.idEtudiant)" class="btn btn-info">  <i class="fa fa-eye"></i></button></td>
-                    <td> <button class="btn btn-info">  <i class="fa fa-cash-register"></i></button></td>
-                    <td> <button class="btn btn-info">  <i class="fa fa-eject"></i></button></td>
+                    <td> <button data-bs-toggle="modal" [attr.data-bs-target]="'#reinscription' + etudiant.idEtudiant" class="btn btn-info">  <i class="fa fa-eject"></i></button>
+
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="reinscription{{etudiant.idEtudiant}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog  modal-lg ">
+                                <form>
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Réinscription : {{etudiant.prenomEtudiant}} {{etudiant.nomEtudiant}}</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="container">
+                                                <div class="row">
+
+                                                    <input type="hidden" class="form-control" aria-describedby="emailHelp" value="{{etudiant.idEtudiant}}" [(ngModel)]="etudiantDto.idEtudiant" name="idEtudiant">
+
+                                                    <div class="col">
+                                                        <label for="exampleInputEmail1">Classe</label>
+                                                        <select id="inputState" class="form-select" name="classe" [(ngModel)]="classeDto.idClasse">
+                                                    <option selected="selected"  [ngValue]="null" disabled>Choisir la classe</option>
+                                                    <option *ngFor="let classe of listClasse" value="{{classe.idClasse}}"> {{classe.nomClasse}} - {{classe.niveau.nomNiveau}} </option>
+                                                  </select>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                            <button type="button" (click)="reinscription(etudiant.idEtudiant)" class="btn btn-success"><i class="fas fa-save"></i>&nbsp;Enregistrer</button>
+
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+
+
+                    </td>
                     <td>
                         <button data-bs-toggle="modal" [attr.data-bs-target]="'#exampleModal' + etudiant.idEtudiant" class="btn btn-info" style="margin-left: 10px">  <i class="fa fa-eye"></i></button>
 

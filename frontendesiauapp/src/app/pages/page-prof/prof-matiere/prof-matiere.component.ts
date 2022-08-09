@@ -21,6 +21,8 @@ export class ProfMatiereComponent implements OnInit {
   listClasse: Array<any> = [];
   matieres: Array<any> = [];
   profs: Array<any> = []; 
+  matiereprofs: Array<any> = [];
+  dtOptions: DataTables.Settings = {};
   
 
   constructor(
@@ -34,6 +36,13 @@ export class ProfMatiereComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 5,
+      lengthMenu : [5, 10, 25, 100],
+      processing: true,
+  }
 
     this.classeService.getClasseList()
     .subscribe(classes => {
@@ -54,6 +63,8 @@ export class ProfMatiereComponent implements OnInit {
       console.log(data);
        });
 
+    this.getMatiereProfList()
+
   }
 
   onSubmit(){
@@ -68,12 +79,42 @@ export class ProfMatiereComponent implements OnInit {
       this.profService.createMatiereProf(this.professeurmatiere).subscribe(data =>{
       console.log(data); 
       this.toast.success({detail:"Mesage de reussite",summary:"Matière enrégistrée avec succès",duration:3000});
+      this.reloadPage();
        },
      error => {
        this.toast.error({detail:"Message d'erreur",summary:"Enregistrement echoué, réessayer encore",duration:3000});
+       this.reloadPage();
      })
      }
 
-     
+     private getMatiereProfList() {
+      this.profService.getAllsMatiereProf().subscribe(reponse => {
+        this.matiereprofs = reponse;
+        console.log(reponse);
+    });
+    }
+    
+    
+    deleteMatiereProf(idProfMatiere: number){
+  this.profService.deleteProfMatiereById(idProfMatiere).subscribe( data => {
+    console.log(data);
+    this.reloadPage();
+   this.toast.success({detail:"Mesage de reussite",summary:"Ligne supprimée avec succès",duration:4000});
+   setTimeout(() => {
+    this.reloadPage();
+   }, 3000);
+ 
+  },
+  error => {
+    this.toast.error({detail:"Message d'erreur",summary:"Suppression echoué, réessayer encore",duration:3000});
+  }
+  )
+ 
+}
 
+
+/* reload*/
+reloadPage(){
+  window.location.reload();
+}
 }

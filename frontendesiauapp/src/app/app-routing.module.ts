@@ -25,6 +25,15 @@ import { ListDepartementComponent } from './pages/page-departement/list-departem
 import { CreateDepartementComponent } from './pages/page-departement/create-departement/create-departement.component';
 import { UpdateDepartementComponent } from './pages/page-departement/update-departement/update-departement.component';
 import { ProfMatiereComponent } from './pages/page-prof/prof-matiere/prof-matiere.component';
+import { CreatePaiementComponent } from './pages/page-paiement/create-paiement/create-paiement.component';
+import { FormulairePaiementComponent } from './pages/page-paiement/formulaire-paiement/formulaire-paiement.component';
+import { ListPaiementComponent } from './pages/page-paiement/list-paiement/list-paiement.component';
+import { SituationPaiementComponent } from './pages/page-paiement/situation-paiement/situation-paiement.component';
+import { ListPersonnelComponent } from './pages/page-personnel/list-personnel/list-personnel.component';
+import { CreatePersonnelComponent } from './pages/page-personnel/create-personnel/create-personnel.component';
+import { UpdatePersonnelComponent } from './pages/page-personnel/update-personnel/update-personnel.component';
+import { PersonnelSalaireComponent } from './pages/page-personnel/personnel-salaire/personnel-salaire.component';
+import { ListPretComponent } from './pages/page-personnel/list-pret/list-pret.component';
 
 
 
@@ -143,6 +152,46 @@ const routes: Routes = [
       {
         path: 'prof-matiere',
         component: ProfMatiereComponent
+      },
+      {
+        path: 'ajouter-paiement',
+        component: CreatePaiementComponent
+      },
+      {
+        path: 'saisie-paiement/:idEtudiant',
+        component: FormulairePaiementComponent
+      },
+      {
+        path: 'list-paiement/:idEtudiant',
+        component: ListPaiementComponent
+      },
+      {
+        path: 'situation-paiement',
+        component: SituationPaiementComponent
+      },
+      {
+        path: 'list-personnel',
+        component: ListPersonnelComponent
+      },
+      {
+        path: 'create-personnel',
+        component: CreatePersonnelComponent
+      },
+      {
+        path: 'update-personnel/:idPersonnel',
+        component: UpdatePersonnelComponent
+      },
+      {
+        path: 'personnel-salaire',
+        component: PersonnelSalaireComponent
+      },
+      {
+        path: 'list-pret/:idPersonnel',
+        component: ListPretComponent
+      },
+      {
+        path: 'list-pret/:idPersonnel/:mois',
+        component: ListPretComponent
       }
     ] 
   }
