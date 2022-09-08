@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EtudiantService } from '../../../composants/services/etudiant.service';
 import { NgToastService } from 'ng-angular-popup';
 import { ClasseService } from '../../../composants/services/classe.service';
 import { Etudiant } from 'src/app/composants/models/etudiant';
+import { AuthenticationService } from '../../../composants/services/authentication.service';
 
 @Component({
   selector: 'app-list-etudiant',
@@ -17,7 +18,7 @@ export class ListEtudiantComponent implements OnInit {
   listClasse: Array<any> = [];
   classeDto : any={}; 
   idEtudiant!: number;
-  listEtudiant: Array<Etudiant> = [];
+  listEtudiant: Array<any> = [];
   //listClasse: Array<Classe> = [];
   
   etudiant: Etudiant = new Etudiant();
@@ -25,29 +26,25 @@ export class ListEtudiantComponent implements OnInit {
 
  toasts: any[] = [];
  myFilterText!:any
+ myFilterText2!:any
+
 
   constructor( private etudiantService: EtudiantService,  private router: Router,private toast: NgToastService,
-     private classeService: ClasseService) { }
+     private classeService: ClasseService, public authService: AuthenticationService,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 5,
-      lengthMenu : [5, 10, 25, 100],
-      processing: true,
-      stateSave: true,
-      language: {
-        url: '//cdn.datatables.net/plug-ins/1.11.5/i18n/fr-FR.json'
-      },
-  }
 
   this.getEtudiants();
-
-  this.classeService.getClasseList()
-  .subscribe(classes => {
-    this.listClasse = classes;
-  });
-
+  
+  this.dtOptions = {
+    pagingType: 'full_numbers',
+    pageLength: 4,
+    lengthMenu : [4, 10, 25, 100],
+    processing: true,
+    
+  };
+   
+    this.getClasses()
 }
   
 
@@ -58,14 +55,22 @@ export class ListEtudiantComponent implements OnInit {
 });
 }
 
+private getClasses() {
+
+  this.classeService.getClasseList()
+  .subscribe(classes => {
+    this.listClasse = classes;
+  });
+
+}
+
  // Methode pour editer un etudiant
  updateEtudiant(idEtudiant: number){
-  this.router.navigate(['etudiant', idEtudiant]);
+  this.router.navigate(['dashboard/update-etudiant', idEtudiant]);
 }
 
 deleteEtudiant(idEtudiant: number){
   
-//Methode pour supprimer un etudiant
   this.etudiantService.deleteEtudiant(idEtudiant).subscribe( data => {
     console.log(data);
     this.getEtudiants() 
@@ -84,14 +89,18 @@ deleteEtudiant(idEtudiant: number){
 
 // Methode pour editer un etudiant
 noteEtudiant(idEtudiant: number){
-  this.router.navigate(['note-etudiant', idEtudiant]);
+  this.router.navigate(['dashboard/note-etudiant', idEtudiant]);
 }
 
 
 
 /* reload*/
 reloadPage(){
-  window.location.reload();
+  this.router.routeReuseStrategy.shouldReuseRoute= () => false;
+  this.router.onSameUrlNavigation = 'reload';
+  this.router.navigate(['./'], {
+    relativeTo: this.route
+  })
 }
  
 reinscription(idEtudiant: number): void{
@@ -101,7 +110,7 @@ reinscription(idEtudiant: number): void{
   this.etudiant.classe = this.classeDto;
   
   this.etudiantService.updateEtudiant(this.idEtudiant, this.etudiant).subscribe(data =>{
-    this.reloadPage()
+    
      this.toast.success({detail:"Mesage de reussite",summary:"Réinscription  effectuée avec succès",duration:4000});
    },
   error => { 

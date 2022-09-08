@@ -14,7 +14,7 @@
                     <button type="button" class="btn btn-success">Exporter</button>
                 </div>
                 <div class="col-md-4">
-                    <button type="button" class="btn btn-primary" routerLink="/create-matiere">Nouveau</button>
+                    <button type="button" class="btn btn-primary" routerLink="/dashboard/create-matiere">Nouveau</button>
                 </div>
             </div>
 
@@ -22,7 +22,7 @@
     </div>
     <div class="row m-3">
 
-        <table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+        <table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions">
             <thead>
                 <tr>
                     <th>ID</th>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { Personnel } from 'src/app/composants/models/personnel';
 import { Pret } from 'src/app/composants/models/pret';
@@ -17,7 +17,7 @@ export class PersonnelSalaireComponent implements OnInit {
   
   pret : Pret = new Pret()
 
-  constructor( private router: Router, private personnelService: PersonnelService,private toast: NgToastService) { }
+  constructor( private router: Router, private personnelService: PersonnelService,private toast: NgToastService,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
 
@@ -45,7 +45,7 @@ ajouterPret(): void{
   this.personnelService.createPret(this.pret).subscribe(data =>{
     console.log(data) 
     this.toast.success({detail:"Mesage de reussite",summary:"Enregistrement effectué avec succès",duration:4000});
-    this.reloadPage()
+   // this.reloadPage()
   }, error => { 
     this.toast.error({detail:"Message d'erreur",summary:"Enregistrement echoué, réessayer encore",duration:4000});
     console.log(this.pret.personnel)
@@ -60,6 +60,10 @@ ajouterPret(): void{
   
 /* reload*/
 reloadPage(){
-  window.location.reload();
+  this.router.routeReuseStrategy.shouldReuseRoute= () => false;
+  this.router.onSameUrlNavigation = 'reload';
+  this.router.navigate(['./'], {
+    relativeTo: this.route
+  })
 } 
 }

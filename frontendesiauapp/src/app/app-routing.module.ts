@@ -34,6 +34,10 @@ import { CreatePersonnelComponent } from './pages/page-personnel/create-personne
 import { UpdatePersonnelComponent } from './pages/page-personnel/update-personnel/update-personnel.component';
 import { PersonnelSalaireComponent } from './pages/page-personnel/personnel-salaire/personnel-salaire.component';
 import { ListPretComponent } from './pages/page-personnel/list-pret/list-pret.component';
+import { AuthenticationGuard } from './guards/authentication.guard';
+import { ListUserComponent } from './pages/page-user/list-user/list-user.component';
+import { UpdateUserComponent } from './pages/page-user/update-user/update-user.component';
+import { CreateUserComponent } from './pages/page-user/create-user/create-user.component';
 
 
 
@@ -45,15 +49,19 @@ const routes: Routes = [
     component: PageLoginComponent
   },
   {
+    path: '',
+    component: PageLoginComponent, canActivate: [AuthenticationGuard],
+  },
+  {
     path: 'inscrire',
     component: PageInscriptionComponent
   },
   {
-    path: '',
-    component: PageDashboardComponent,
+    path: 'dashboard',
+    component: PageDashboardComponent, canActivate: [AuthenticationGuard],
     children:[
       {
-        path: 'statistique',
+        path: 'dashboard/statistique',
         component: PageStatistiqueComponent
       },
 
@@ -81,7 +89,7 @@ const routes: Routes = [
         component: ListEtudiantComponent
       },
       {
-        path: 'etudiant/:idEtudiant',
+        path: 'update-etudiant/:idEtudiant',
         component: UpdateEtudiantComponent
       },
       {
@@ -192,6 +200,20 @@ const routes: Routes = [
       {
         path: 'list-pret/:idPersonnel/:mois',
         component: ListPretComponent
+      },
+      {
+        path: 'gestion-user/create-user',
+        component: CreateUserComponent
+      }
+      ,
+      {
+        path: 'gestion-user/list-user',
+        component: ListUserComponent
+      }
+      ,
+      {
+        path: 'gestion-user/update-user/:userId',
+        component: UpdateUserComponent
       }
     ] 
   }

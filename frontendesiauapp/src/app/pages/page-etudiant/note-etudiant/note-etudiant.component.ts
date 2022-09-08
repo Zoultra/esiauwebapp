@@ -15,7 +15,7 @@ export class NoteEtudiantComponent implements OnInit {
   myFilterText!:any
    
   
-  constructor(private noteService: NoteService, private route: Router, private router: ActivatedRoute) { }
+  constructor(private noteService: NoteService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.dtOptions = {
@@ -39,7 +39,7 @@ export class NoteEtudiantComponent implements OnInit {
   
   private getNoteEtudiant(){
 
-    this.idEtudiant = this.router.snapshot.params['idEtudiant'];
+    this.idEtudiant = this.route.snapshot.params['idEtudiant'];
     this.noteService.getNoteListByEtudiant(this.idEtudiant).subscribe(data => {
     this.notes = data;
     console.log(data);
@@ -49,8 +49,11 @@ export class NoteEtudiantComponent implements OnInit {
   }
 /* reload*/
 reloadPage(){
-  this.getNoteEtudiant;
-  window.location.reload();
+  this.router.routeReuseStrategy.shouldReuseRoute= () => false;
+  this.router.onSameUrlNavigation = 'reload';
+  this.router.navigate(['./'], {
+    relativeTo: this.route
+  })
   
 }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { Personnel } from '../../../composants/models/personnel';
 import { PersonnelService } from '../../../composants/services/personnel.service';
@@ -13,7 +13,7 @@ export class ListPersonnelComponent implements OnInit {
   personnels: Personnel[] = []
   idPersonnel!: number
   dtOptions: DataTables.Settings = {};
-  constructor( private router: Router, private personnelService: PersonnelService,private toast: NgToastService) { }
+  constructor( private router: Router, private personnelService: PersonnelService,private toast: NgToastService,private route: ActivatedRoute ) { }
 
   ngOnInit(): void {
       this.getPersonnelList()
@@ -32,7 +32,7 @@ export class ListPersonnelComponent implements OnInit {
 
   
   updatePersonnel(idPersonnel: number){
-    this.router.navigate(['update-personnel', idPersonnel]);
+    this.router.navigate(['dashboard/update-personnel', idPersonnel]);
   }
 
   deletePersonnel(idPersonnel: number){
@@ -46,7 +46,7 @@ this.personnelService.deletePersonnel(idPersonnel).subscribe( data => {
 
 },
 error => {
-  this.toast.error({detail:"Message d'erreur",summary:"Suppression echoué, réessayer encore",duration:5000});
+  this.toast.error({detail:"Message d'erreur",summary:"Echec, des prets sont enregistrés au nom de cet emploiyé",duration:5000});
 }
 )
 
@@ -55,7 +55,11 @@ error => {
 
 /* reload*/
 reloadPage(){
-  window.location.reload();
+  this.router.routeReuseStrategy.shouldReuseRoute= () => false;
+  this.router.onSameUrlNavigation = 'reload';
+  this.router.navigate(['./'], {
+    relativeTo: this.route
+  })
 }
 
 }

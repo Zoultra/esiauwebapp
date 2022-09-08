@@ -36,6 +36,6 @@ export class UpdateDepartementComponent implements OnInit {
       })
     }
     goToDepartementList(){
-      this.router.navigate(['/list-departement']); 
+      this.router.navigate(['/dashboard/list-departement']); 
     }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { UE } from 'src/app/composants/models/ue';
 import { UeService } from '../../../composants/services/ue.service';
@@ -17,7 +17,7 @@ export class ListUeComponent implements OnInit {
   //listUes?: UE[];
   
 
-  constructor(private toast: NgToastService, private router: Router, private ueService: UeService) { }
+  constructor(private toast: NgToastService, private router: Router, private ueService: UeService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.dtOptions = {
@@ -25,9 +25,9 @@ export class ListUeComponent implements OnInit {
       pageLength: 5,
       lengthMenu : [5, 10, 25, 100],
       processing: true,
-      language: {
+    /*  language: {
         url: '//cdn.datatables.net/plug-ins/1.11.5/i18n/fr-FR.json'
-      },
+      },*/
   };
   this.getUeList();
   }
@@ -41,7 +41,7 @@ export class ListUeComponent implements OnInit {
 }
 // Methode pour editer un etudiant
 updateUe(idUe: number){
-  this.router.navigate(['update-ue', idUe]);
+  this.router.navigate(['dashboard/update-ue', idUe]);
 }
 //Methode pour supprimer un etudiant
 
@@ -64,8 +64,12 @@ deleteUe(idUe: number){
  
 } 
 /* reload*/
-reloadPage(){
-  window.location.reload();
+reloadPage(){ 
+  this.router.routeReuseStrategy.shouldReuseRoute= () => false;
+  this.router.onSameUrlNavigation = 'reload';
+  this.router.navigate(['./'], {
+    relativeTo: this.route
+  })
 }
 
 }

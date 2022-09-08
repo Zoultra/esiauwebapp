@@ -43,29 +43,22 @@ export class PageClasseComponent implements OnInit {
 
   ngOnInit(): void { 
     
-    
-    this.dtOptions = 
-    {
+  
+  
+  this.dtOptions = {
     pagingType: 'full_numbers',
     pageLength: 5,
     lengthMenu : [5, 10, 25, 100],
     processing: true,
-    
-    //scrollY: '200px',
-    stateSave: true,
-   // scrollCollapse: true,
-   // paging: false,
-    language: {
+   /* language: {
       url: '//cdn.datatables.net/plug-ins/1.11.5/i18n/fr-FR.json'
-    },
-
-   
-  };
+    },*/
+}
+this.getclasses();
   this.formModal = new window.bootstrap.Modal(
     document.getElementById('exampleModal')
   ); 
 
-  this.getclasses();
   
 
   this.exform = new FormGroup({
@@ -111,13 +104,13 @@ openModal(){
 // Methode pour declencher le processus de modification de classe
 
 updateClasse(idClasse: number){
-  this.router.navigate(['classe', idClasse]);
+  this.router.navigate(['/dashboard/classe', idClasse]);
 }
 
 
 closeModal(){
-  this.router.navigate(['/classe']) .then(() => {
-    window.location.reload();
+  this.router.navigate(['/dashboard/classe']) .then(() => {
+    this.reloadPage()
   });
 }
 
@@ -194,7 +187,11 @@ console.log(this.classe);
 
 /* reload*/
 reloadPage(){
-window.location.reload();
+  this.router.routeReuseStrategy.shouldReuseRoute= () => false;
+  this.router.onSameUrlNavigation = 'reload';
+  this.router.navigate(['./'], {
+    relativeTo: this.route
+  })
 }
 // boucle
   

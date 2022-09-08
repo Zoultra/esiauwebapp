@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Etudiant } from 'src/app/composants/models/etudiant';
 import { ClasseService } from 'src/app/composants/services/classe.service';
 import { EtudiantService } from 'src/app/composants/services/etudiant.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-create-paiement',
@@ -17,7 +17,7 @@ export class CreatePaiementComponent implements OnInit {
  toasts: any[] = [];
  myFilterText!:any
  
-  constructor(private etudiantService: EtudiantService,private classeService: ClasseService, private router: Router) { }
+  constructor(private etudiantService: EtudiantService,private classeService: ClasseService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getEtudiants()
@@ -32,9 +32,9 @@ export class CreatePaiementComponent implements OnInit {
       lengthMenu : [5, 10, 25, 100],
       processing: true,
       stateSave: true,
-      language: {
+    /*  language: {
         url: '//cdn.datatables.net/plug-ins/1.11.5/i18n/fr-FR.json'
-      },
+      },*/
   }
     
   }
@@ -47,16 +47,20 @@ export class CreatePaiementComponent implements OnInit {
 });
 }
    ajouterPaiement(idEtudiant: number){
-    this.router.navigate(['saisie-paiement',idEtudiant]);
+    this.router.navigate(['dashboard/saisie-paiement',idEtudiant]);
    }
 
    consulterPaiement(idEtudiant: number){
-    this.router.navigate(['list-paiement',idEtudiant]);
+    this.router.navigate(['dashboard/list-paiement',idEtudiant]);
    }
 
 
 /* reload*/
 reloadPage(){
-  window.location.reload();
+  this.router.routeReuseStrategy.shouldReuseRoute= () => false;
+  this.router.onSameUrlNavigation = 'reload';
+  this.router.navigate(['./'], {
+    relativeTo: this.route
+  })
 }
 }

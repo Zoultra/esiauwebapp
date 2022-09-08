@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { ProfesseurMatiere } from 'src/app/composants/models/prof-matiere';
 import { ClasseService } from 'src/app/composants/services/classe.service';
@@ -31,7 +31,8 @@ export class ProfMatiereComponent implements OnInit {
       private matiereService :MatiereService,
       private profService : ProfService,
       private router: Router,
-      private toast: NgToastService
+      private toast: NgToastService,
+      private route: ActivatedRoute
 
   ) { }
 
@@ -115,6 +116,10 @@ export class ProfMatiereComponent implements OnInit {
 
 /* reload*/
 reloadPage(){
-  window.location.reload();
+  this.router.routeReuseStrategy.shouldReuseRoute= () => false;
+  this.router.onSameUrlNavigation = 'reload';
+  this.router.navigate(['./'], {
+    relativeTo: this.route
+  })
 }
 }

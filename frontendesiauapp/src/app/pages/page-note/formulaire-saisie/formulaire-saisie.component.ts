@@ -72,7 +72,7 @@ export class FormulaireSaisieComponent implements OnInit {
   }
 
   goToNoteEtudiantList(){
-    this.router.navigate(['/note']);
+    this.router.navigate(['/dashboard/note']);
   }
 
 }

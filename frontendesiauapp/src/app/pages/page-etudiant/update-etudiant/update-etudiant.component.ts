@@ -65,6 +65,6 @@ error => {
 
 }
 goToEtudiantList(){
-  this.router.navigate(['/list-etudiant']);
+  this.router.navigate(['dashboard/list-etudiant']);
 } 
 }

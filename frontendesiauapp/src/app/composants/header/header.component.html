@@ -8,11 +8,11 @@
     </div>
     <div class="col-md-2">
         <div class="row">
-            <div class="col-md-9 text-end">
-                <span>Bonjour Zou</span>
+            <div class="col-md-8 text-end">
+                <span> {{authService.authenticatedUser?.prenomUser}}  {{authService.authenticatedUser?.nomUser}}</span>
             </div>
-            <div class="col-md-3">
-                <img src="favicon.ico" class="rounded-circle" alt="" />
+            <div class="col-md-4">
+                <button (click)="handleLogout()" class="btn btn-danger"><i class="fa fa-power-off"></i></button>
             </div>
         </div>
 

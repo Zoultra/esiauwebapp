@@ -31,7 +31,7 @@
                     <div class="row">
                         <div class="col">
                             <label for="exampleInputEmail1">Salaire brut</label>
-                            <input type="text" class="form-control" aria-describedby="emailHelp" [(ngModel)]="personnel.montantSalaire" name="montantSalaire" placeholder="Entrez le salaire">
+                            <input type="number" class="form-control" aria-describedby="emailHelp" [(ngModel)]="personnel.montantSalaire" name="montantSalaire" placeholder="Entrez le salaire">
                         </div>
                         <div class="col">
                             <label for="exampleInputEmail1">Poste</label>
@@ -54,7 +54,7 @@
 
                     <div class="row">
                         <div class="mb-0 mt-3  d-flex justify-content-md-end">
-                            <button type="button" class="btn btn-danger" [routerLink]="['/list-personnel']">Annuler</button>&nbsp;&nbsp;
+                            <button type="button" class="btn btn-danger" [routerLink]="['/dashboard/list-personnel']">Annuler</button>&nbsp;&nbsp;
                             <button type="submit" class="btn btn-primary">
                  <i class="fas fa-check"></i>Enregistrer 
                 </button>

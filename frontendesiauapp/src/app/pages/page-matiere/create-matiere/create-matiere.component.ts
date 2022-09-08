@@ -41,7 +41,7 @@ export class CreateMatiereComponent implements OnInit {
     })
   }
   goToMatiereList(){
-    this.router.navigate(['/list-matiere']);
+    this.router.navigate(['/dashboard/list-matiere']);
   }
 
 }

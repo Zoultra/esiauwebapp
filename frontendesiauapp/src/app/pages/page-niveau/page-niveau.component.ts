@@ -4,6 +4,9 @@ import { NiveauService } from 'src/app/composants/services/niveau.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgToastService } from 'ng-angular-popup';
+import { CookieService } from 'ngx-cookie-service';
+
+
   
 declare var window:any;
 
@@ -35,17 +38,23 @@ export class PageNiveauComponent implements OnInit{
       pageLength: 5,
       lengthMenu : [5, 10, 25, 100],
       processing: true,
-      language: {
+     /* language: {
         url: '//cdn.datatables.net/plug-ins/1.11.5/i18n/fr-FR.json'
-      },
+      },*/
+  }
+   this.getNiveaux()
+    
+    
 
-     
-    };
+    this.niveauService.getNiveauList().subscribe(data => {
+      this.niveaux = data;
+  });
+
     this.formModal = new window.bootstrap.Modal(
       document.getElementById('exampleModal')
     ); 
 
-    this.getNiveaux();
+    
 
     this.exform = new FormGroup({
       "nomNiveau": new FormControl(null,Validators.required)
@@ -81,12 +90,12 @@ export class PageNiveauComponent implements OnInit{
   // Methode pour declencher le processus de modification de niveau
 
   updateNiveau(idNiveau: number){
-    this.router.navigate(['niveau', idNiveau]);
+    this.router.navigate(['dashboard/niveau', idNiveau]);
   }
 
 
   closeModal(){
-    this.router.navigate(['/niveau']) .then(() => {
+    this.router.navigate(['/niveau']).then(() => {
       window.location.reload();
     });;
   }
@@ -142,7 +151,12 @@ onSubmit(){
 
 /* reload*/
 reloadPage(){
-  window.location.reload();
+  
+  this.router.routeReuseStrategy.shouldReuseRoute= () => false;
+  this.router.onSameUrlNavigation = 'reload';
+  this.router.navigate(['./'], {
+    relativeTo: this.route
+  })
 }
 
 

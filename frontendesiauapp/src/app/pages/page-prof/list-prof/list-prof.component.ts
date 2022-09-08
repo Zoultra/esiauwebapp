@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfService } from 'src/app/composants/services/prof.service';
 import { Professeur } from '../../../composants/models/prof';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 
 @Component({
@@ -13,7 +13,7 @@ export class ListProfComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   profs: Array<any> = [];
 
-  constructor(private profService: ProfService, private router: Router, private toast:NgToastService ) { }
+  constructor(private profService: ProfService, private router: Router, private toast:NgToastService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getProfList()
@@ -22,9 +22,9 @@ export class ListProfComponent implements OnInit {
       pageLength: 5,
       lengthMenu : [5, 10, 25, 100],
       processing: true,
-      language: {
+     /* language: {
         url: '//cdn.datatables.net/plug-ins/1.11.5/i18n/fr-FR.json'
-      },
+      },*/
   }
   }
 
@@ -38,7 +38,7 @@ export class ListProfComponent implements OnInit {
 // Methode pour la modif
 
 updateProf(idProf: number){
-  this.router.navigate(['update-prof', idProf]);
+  this.router.navigate(['dashboard/update-prof', idProf]);
 }
 
 //Methode pour supprimer un prof
@@ -52,10 +52,9 @@ deleteProf(idProf: number){
    setTimeout(() => {
     this.reloadPage();
    }, 5000);
- 
   },
   error => {
-    this.toast.error({detail:"Message d'erreur",summary:"Suppression echoué, réessayer encore",duration:5000});
+    this.toast.error({detail:"Message d'erreur",summary:"Suppression echoué, des matières sont affectées au professeur",duration:5000});
   }
   )
  
@@ -64,7 +63,11 @@ deleteProf(idProf: number){
 
 /* reload*/
 reloadPage(){
-  window.location.reload();
+  this.router.routeReuseStrategy.shouldReuseRoute= () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate(['./'], {
+      relativeTo: this.route
+    })
 }
 
 }

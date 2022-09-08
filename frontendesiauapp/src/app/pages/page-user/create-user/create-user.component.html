@@ -1,0 +1,46 @@
+<div class="row m-3">
+    <div class="container my-container">
+        <div class="card">
+            <div class="card-header text-center">
+                <h3>Enrégistrement de compte</h3>
+            </div>
+            <form (ngSubmit)="onSubmit()">
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1">Nom</label>
+                        <input type="text" class="form-control" aria-describedby="emailHelp" [(ngModel)]="user.nomUser" name="nomUser" placeholder="Entrez le nom">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1">Prénom</label>
+                        <input type="email" class="form-control" aria-describedby="emailHelp" [(ngModel)]="user.prenomUser" name="prenomUser" placeholder="Entrez le prenom">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1">E-mail</label>
+                        <input type="email" class="form-control" aria-describedby="emailHelp" [(ngModel)]="user.emailUser" name="emailUser" placeholder="Entrez l'email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1">Role</label>
+                        <input type="email" class="form-control" aria-describedby="emailHelp" [(ngModel)]="user.roles" name="roles" placeholder="Entrez le role">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1">Nom d'utilisateur</label>
+                        <input type="email" class="form-control" aria-describedby="emailHelp" [(ngModel)]="user.username" name="username" placeholder="Entrez le nom d'utilisateur">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1">Mot de passe</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" [(ngModel)]="user.password" name="password" placeholder="Entrez mot de passe">
+                    </div>
+
+                    <div class="mb-3 d-flex justify-content-md-between">
+                        <button type="button" class="btn btn-danger" [routerLink]="['/dashboard/gestion-user/list-user']">Retour</button>
+                        <button type="submit" class="btn btn-primary">
+                 <i class="fas fa-check"></i>Enrégistrer
+                </button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

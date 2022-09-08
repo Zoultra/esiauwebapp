@@ -22,7 +22,9 @@ export class CreatePersonnelComponent implements OnInit {
     this.savePersonnel();
   }
   savePersonnel(){
-    
+    this.personnel.username = "zou"
+    this.personnel.password = "zou"
+    this.personnel.roles = "admin"
     this.personnelService.createPersonnel(this.personnel).subscribe( data =>{
       console.log(data)
       this.goToPersonnelList()

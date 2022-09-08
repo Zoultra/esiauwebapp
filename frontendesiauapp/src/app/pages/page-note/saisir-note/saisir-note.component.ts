@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ClasseService } from 'src/app/composants/services/classe.service';
 import { EtudiantService } from 'src/app/composants/services/etudiant.service';
 
@@ -12,10 +12,16 @@ export class SaisirNoteComponent implements OnInit {
   listEtudiant: Array<any> = [];
   listClasse: Array<any> = [];
   myFilterText!:any
+  dtOptions: DataTables.Settings = {};
   
-  constructor(private etudiantService: EtudiantService,private classeService: ClasseService, private router: Router) { }
+  constructor(private etudiantService: EtudiantService,private classeService: ClasseService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 5,
+      lengthMenu : [5, 10, 25, 100],
+    };
     this.getEtudiants()
     this.classeService.getClasseList()
   .subscribe(classes => {
@@ -31,10 +37,14 @@ export class SaisirNoteComponent implements OnInit {
 }
 
 saisirNote(idEtudiant: number){
-  this.router.navigate(["saisie-de-note", idEtudiant])
+  this.router.navigate(["dashboard/saisie-de-note", idEtudiant])
 }
   /* reload*/
   reloadPage(){
-    window.location.reload();
+    this.router.routeReuseStrategy.shouldReuseRoute= () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate(['./'], {
+      relativeTo: this.route
+    })
   }
 }

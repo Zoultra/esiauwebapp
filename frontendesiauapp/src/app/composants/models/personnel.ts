@@ -8,5 +8,12 @@ export class Personnel {
     emploi!: string
     modePaiement!: string
     categoriePersonnel!: string
+
+
+    username!: string;
+
+    password!: string;
+
+    roles!: string;
      
 }

@@ -47,6 +47,9 @@ import { UpdatePersonnelComponent } from './pages/page-personnel/update-personne
 import { ListPersonnelComponent } from './pages/page-personnel/list-personnel/list-personnel.component';
 import { PersonnelSalaireComponent } from './pages/page-personnel/personnel-salaire/personnel-salaire.component';
 import { ListPretComponent } from './pages/page-personnel/list-pret/list-pret.component';
+import { ListUserComponent } from './pages/page-user/list-user/list-user.component';
+import { UpdateUserComponent } from './pages/page-user/update-user/update-user.component';
+import { CreateUserComponent } from './pages/page-user/create-user/create-user.component';
 
 
 
@@ -92,7 +95,10 @@ import { ListPretComponent } from './pages/page-personnel/list-pret/list-pret.co
     UpdatePersonnelComponent,
     ListPersonnelComponent,
     PersonnelSalaireComponent,
-    ListPretComponent
+    ListPretComponent,
+    ListUserComponent,
+    UpdateUserComponent,
+    CreateUserComponent
  
    
   ],

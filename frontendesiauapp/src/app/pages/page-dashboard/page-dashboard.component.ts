@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page-dashboard.component.scss']
 })
 export class PageDashboardComponent implements OnInit {
-
+   
+  
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }

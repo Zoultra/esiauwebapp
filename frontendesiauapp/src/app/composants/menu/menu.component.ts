@@ -20,7 +20,7 @@ export class MenuComponent implements OnInit {
         id:'11',
         titre:'Vue d\'ensemble',
         icon:'fas fa-chart-pie',
-        url:''
+        url:'vue-densemble'
       },
       {
         id:'12',
@@ -41,7 +41,7 @@ export class MenuComponent implements OnInit {
         id:'21',
         titre:'Gestion des niveaux',
         icon:'fas fa-edit',
-        url:'niveau'
+        url:'dashboard/niveau'
       } 
     ]
   },
@@ -55,7 +55,7 @@ export class MenuComponent implements OnInit {
         id:'31',
         titre:'Gestion des classes',
         icon:'fas fa-edit',
-        url:'classe'
+        url:'dashboard/classe'
       } 
     ]
   },
@@ -69,7 +69,7 @@ export class MenuComponent implements OnInit {
         id:'41',
         titre:'Gestion des etudiants',
         icon:'fas fa-edit',
-        url:'list-etudiant'
+        url:'dashboard/list-etudiant'
       } 
     ]
   },
@@ -83,7 +83,7 @@ export class MenuComponent implements OnInit {
         id:'4bis1',
         titre:'Gestion des Paiements',
         icon:'fas fa-edit',
-        url:'ajouter-paiement'
+        url:'dashboard/ajouter-paiement'
       }/*,
       {
         id:'4bis2',
@@ -103,7 +103,7 @@ export class MenuComponent implements OnInit {
         id:'51',
         titre:'Gestion des departements',
         icon:'fas fa-edit',
-        url:'list-departement'
+        url:'dashboard/list-departement'
       }/*,
       {
         id:'52',
@@ -123,7 +123,7 @@ export class MenuComponent implements OnInit {
         id:'61',
         titre:'Gestion des UEs',
         icon:'fas fa-edit',
-        url:'list-ue'
+        url:'dashboard/list-ue'
       }/*,
       {
         id:'62',
@@ -143,7 +143,7 @@ export class MenuComponent implements OnInit {
         id:'71',
         titre:'Gestion des matières',
         icon:'fa fa-edit',
-        url:'list-matiere'
+        url:'dashboard/list-matiere'
       }/*,
       {
         id:'72',
@@ -163,7 +163,7 @@ export class MenuComponent implements OnInit {
         id:'81',
         titre:'Saisir note',
         icon:'fa fa-edit',
-        url:'note'
+        url:'dashboard/note'
       },
       {
         id:'82',
@@ -183,13 +183,13 @@ export class MenuComponent implements OnInit {
         id:'91',
         titre:'Gestion des professeurs',
         icon:'fa fa-edit',
-        url:'professeur-list'
+        url:'dashboard/professeur-list'
       },
       {
         id:'92',
         titre:'Professeurs / Matières',
         icon:'fa fa-info-circle',
-        url:'prof-matiere'
+        url:'dashboard/prof-matiere'
       }
     ]
   },
@@ -203,27 +203,33 @@ export class MenuComponent implements OnInit {
         id:'991',
         titre:'Gestion des personnels',
         icon:'fa fa-edit',
-        url:'list-personnel'
+        url:'dashboard/list-personnel'
       },
       {
         id:'992',
         titre:'Personnel / Salaire',
         icon:'fa fa-info-circle',
-        url:'personnel-salaire'
+        url:'dashboard/personnel-salaire'
       }
     ]
   },
   {
     id:'10',
-    titre:'Parametrages',
+    titre:'Utilisateurs',
     icon:'fa fa-tasks',
     url:'',
     sousMenu: [
       {
         id:'101',
-        titre:'Utilisateurs',
+        titre:'Gestion des comptes',
         icon:'fa fa-user',
-        url:''
+        url:'dashboard/gestion-user/list-user'
+      },
+      {
+        id:'102',
+        titre:'Mon compte',
+        icon:'fa fa-user',
+        url:'dashboard/gestion-compte'
       }
        
     ]
@@ -239,9 +245,7 @@ export class MenuComponent implements OnInit {
 
   navigate(url?: string): void {
     this.router.navigate([url])
-    .then(() => {
-      window.location.reload();
-    });;;
+     
   }
 
 }

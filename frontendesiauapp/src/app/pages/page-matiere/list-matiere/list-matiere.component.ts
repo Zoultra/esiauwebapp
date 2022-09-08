@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { MatiereService } from '../../../composants/services/matiere.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 
 @Component({
@@ -9,35 +9,32 @@ import { NgToastService } from 'ng-angular-popup';
   templateUrl: './list-matiere.component.html',
   styleUrls: ['./list-matiere.component.scss']
 })
-export class ListMatiereComponent implements OnDestroy, OnInit {
+export class ListMatiereComponent implements OnInit {
   listMatieres: Array<any>=[];
   dtOptions: DataTables.Settings = {};
-  dtTrigger: Subject<any> = new Subject<any>();
+   
   
-  constructor(private matiereService: MatiereService, private router: Router,private toast: NgToastService) { }
+  constructor(private matiereService: MatiereService, private router: Router,private toast: NgToastService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 2
+      pageLength: 5,
+      lengthMenu : [5, 10, 25, 100],
+      processing: true
     };
 
     this.matiereService.getMatiereList().subscribe(data => {
       this.listMatieres = data;
-      this.dtTrigger.next;
+      
       console.log(data);
     });
   }
   
-  
-  ngOnDestroy(): void {
-    // Do not forget to unsubscribe the event
-    this.dtTrigger.unsubscribe();
-  }
-
+   
 
   updateMatiere(idMatiere: number){
-    this.router.navigate(['update-matiere', idMatiere]);
+    this.router.navigate(['dashboard/update-matiere', idMatiere]);
   }
 
   deleteMatiere(idMatiere: number){
@@ -61,7 +58,11 @@ error => {
 
 /* reload*/
 reloadPage(){
-  window.location.reload();
+  this.router.routeReuseStrategy.shouldReuseRoute= () => false;
+  this.router.onSameUrlNavigation = 'reload';
+  this.router.navigate(['./'], {
+    relativeTo: this.route
+  })
 }
 
 }
