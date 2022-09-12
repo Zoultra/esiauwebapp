@@ -5,9 +5,6 @@ import java.util.Optional;
 
 import com.esiau.backendesiauapp.models.Classe;
 import com.esiau.backendesiauapp.models.Etudiant;
-import com.esiau.backendesiauapp.models.Niveau; 
-
-
 
 public interface EtudiantService {
     

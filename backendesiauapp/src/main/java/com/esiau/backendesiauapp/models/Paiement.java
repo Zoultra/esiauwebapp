@@ -22,7 +22,7 @@ public class Paiement {
 	private int idPaiement;
     
 	@Column(name = "montant_paiement")
-	private String montantPaiement;
+	private int montantPaiement;
 	
 	@Column(name = "date_paiement")
 	private String datePaiement;

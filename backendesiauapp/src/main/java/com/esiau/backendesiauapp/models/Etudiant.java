@@ -55,6 +55,9 @@ public class Etudiant  {
 	@Column(name="tel_etudiant")
 	private String telEtudiant;
 	
+	@Column(name="frais_scolaire")
+	private String fraisScolaire;
+	
 	@Column(name="prenom_pere")
 	private String prenomPere;
 	

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.esiau.backendesiauapp.dao.PaiementRepository;
+import com.esiau.backendesiauapp.models.Etudiant;
 import com.esiau.backendesiauapp.models.Paiement;
 @Service
 public class PaiementServiceImpl implements PaiementService{
@@ -42,6 +43,12 @@ public class PaiementServiceImpl implements PaiementService{
 	public Paiement updatePaiement(Paiement paiement) {
 		// TODO Auto-generated method stub
 		return paiementRepository.save(paiement);
+	}
+
+	@Override
+	public List<Paiement> findPaiementByEtudiant(Etudiant etudiant) {
+		// TODO Auto-generated method stub
+		return paiementRepository.findNoteByEtudiant(etudiant);
 	}
 
 	

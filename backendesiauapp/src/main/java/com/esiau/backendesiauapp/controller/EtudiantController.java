@@ -94,7 +94,11 @@ public class EtudiantController {
 				currentEtudiant.setIdInscription(id_inscription);
 			}
 			
-			
+			 
+			if(etudiant.getClasse() != null) {
+				currentEtudiant.setClasse(etudiant.getClasse());
+			}
+			 
 			 
 			etudiantService.saveEtudiant(currentEtudiant);
 			return currentEtudiant;

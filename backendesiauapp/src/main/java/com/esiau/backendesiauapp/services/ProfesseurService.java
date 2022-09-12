@@ -2,8 +2,6 @@ package com.esiau.backendesiauapp.services;
 
 import java.util.List;
 import java.util.Optional;
-
-import com.esiau.backendesiauapp.models.Etudiant;
 import com.esiau.backendesiauapp.models.Professeur;
 
 public interface ProfesseurService {
