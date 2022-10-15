@@ -20,7 +20,7 @@ export class SituationPaiementComponent implements OnInit {
     this.getEtudiants()
   }
  
- // Methode pour recuperer la liste de tous les niveaux
+ // Methode pour recuperer la liste de tous les etudiants
  private getEtudiants() {
   this.totalPaiement = 0;
   this.etudiantService.getEtudiantList().subscribe(data => {

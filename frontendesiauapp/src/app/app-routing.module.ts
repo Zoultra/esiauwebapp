@@ -38,6 +38,9 @@ import { AuthenticationGuard } from './guards/authentication.guard';
 import { ListUserComponent } from './pages/page-user/list-user/list-user.component';
 import { UpdateUserComponent } from './pages/page-user/update-user/update-user.component';
 import { CreateUserComponent } from './pages/page-user/create-user/create-user.component';
+import { CreateDepenseComponent } from './pages/page-depense/create-depense/create-depense.component';
+import { UpdateDepenseComponent } from './pages/page-depense/update-depense/update-depense.component';
+import { ListDepenseComponent } from './pages/page-depense/list-depense/list-depense.component';
 
 
 
@@ -214,6 +217,18 @@ const routes: Routes = [
       {
         path: 'gestion-user/update-user/:userId',
         component: UpdateUserComponent
+      },
+      {
+        path: 'gestion-depense/create-depense',
+        component: CreateDepenseComponent
+      },
+      {
+        path: 'gestion-depense/list-depense',
+        component: ListDepenseComponent
+      },
+      {
+        path: 'gestion-depense/update-depense/:idDepense',
+        component: UpdateDepenseComponent
       }
     ] 
   }

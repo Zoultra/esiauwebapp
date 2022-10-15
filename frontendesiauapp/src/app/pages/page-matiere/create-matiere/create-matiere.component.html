@@ -13,6 +13,10 @@
                             <input type="text" class="form-control" aria-describedby="emailHelp" [(ngModel)]="matiere.nomMatiere" name="nomMatiere" placeholder="Entrez le nom">
                         </div>
                         <div class="col">
+                            <label for="exampleInputEmail1">Coefficient</label>
+                            <input type="number" class="form-control" aria-describedby="emailHelp" [(ngModel)]="matiere.coefficient" name="coefficient" placeholder="Entrez le coefficient">
+                        </div>
+                        <div class="col">
                             <label for="exampleInputEmail1">Unité d'Enseignement:</label>
                             <select class="form-select" name="ue" [(ngModel)]="ueDto.idUe">
                                 <option [ngValue]="null" disabled selected >Selectionner une UE</option>

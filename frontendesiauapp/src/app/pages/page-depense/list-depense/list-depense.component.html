@@ -2,7 +2,7 @@
     <div class="row m-3">
 
         <div class="col-md-8 p-0">
-            <h1>Gestion des notes</h1>
+            <h1>Liste des dépenses</h1>
         </div>
         <div class="col-md-3">
             <div class="row">
@@ -13,18 +13,12 @@
                 <div class="col-md-4">
                     <button type="button" class="btn btn-success">Exporter</button>
                 </div>
+                <div class="col-md-4">
+                    <button type="button" class="btn btn-primary" routerLink="/dashboard/gestion-depense/create-depense">Nouveau</button>
+                </div>
             </div>
 
         </div>
-    </div>
-    <div class="md-3 pe-3 d-flex justify-content-md-end">
-        <label class="pe-2">Classe</label>
-        <select style="width: 160px ;" id="inputState" class="form-select" [(ngModel)]="myFilterText">
-            <option value="">Toutes les classes</option>
-         <option *ngFor="let classe of listClasse" value="{{classe.nomClasse}}"> {{classe.nomClasse}} - {{classe.niveau.nomNiveau}} </option>
-           
-         
-          </select>
     </div>
     <div class="row m-3">
 
@@ -48,7 +42,7 @@
                 <label for="inputPassword6" class="col-form-label">Rechercher</label>
             </div>
             <div class="col-auto">
-                <input type="search" [(ngModel)]="search" class="form-control" aria-describedby="passwordHelpInline">
+                <input type="search" [(ngModel)]="myFilterText" class="form-control" aria-describedby="passwordHelpInline">
             </div>
         </div>
 
@@ -56,29 +50,28 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Nom </th>
-                    <th>Prenom </th>
-                    <th>Tel </th>
-                    <th>Classe </th>
-                    <th>Note </th>
+                    <th>Motif </th>
+                    <th>Montant</th>
+                    <th>Date</th>
+                    <th>Action</th>
+
 
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let etudiant of listEtudiant | filter: myFilterText | filter: search | paginate:{
+                <tr *ngFor="let depense of depenses  | filter: myFilterText | paginate:{
                     itemsPerPage: tableSize,
                     currentPage: page,
-                    totalItems: count}; let i = index  ">
+                    totalItems: count}; let i = index">
 
-                    <td> {{ etudiant.idEtudiant }} </td>
-                    <td> {{ etudiant.nomEtudiant }} </td>
-                    <td> {{ etudiant.prenomEtudiant }} </td>
-                    <td> {{ etudiant.telEtudiant }} </td>
-                    <td>{{etudiant.classe.nomClasse}} - {{etudiant.classe.niveau.nomNiveau}}</td>
+                    <td> {{ depense.idDepense }} </td>
+                    <td> {{ depense.motif }} </td>
+                    <td> {{ depense.montantDepense}} </td>
+                    <td> {{ depense.dateDepense}} </td>
+
                     <td>
-                        <button (click)="saisirNote(etudiant.idEtudiant)" class="btn btn-info"> Ajouter</button>
-
-                        <a target="_blank" href='http://localhost/releve/index.php?idEtudiant={{etudiant.idEtudiant}}'> <button type="button" class="btn btn-warning"><i class="fa fa-list"></i>&nbsp;Bulletin</button></a>
+                        <button (click)="updateDepense(depense.idDepense)" class="btn btn-info"> Modifier</button>
+                        <button (click)="deleteDepense(depense.idDepense)" class="btn btn-danger" style="margin-left: 10px"> Supprimer</button>
 
                     </td>
                 </tr>
@@ -91,7 +84,9 @@
 
             </pagination-controls>
         </div>
-
     </div>
+
+
+
 
 </div>

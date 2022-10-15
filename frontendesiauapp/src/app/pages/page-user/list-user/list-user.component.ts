@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { AppUser } from '../../../composants/models/user';
@@ -9,24 +9,23 @@ import { UserService } from '../../../composants/services/user.service';
   templateUrl: './list-user.component.html',
   styleUrls: ['./list-user.component.scss']
 })
-export class ListUserComponent implements OnInit {
+export class ListUserComponent implements  OnInit {
    
   users: AppUser[] = []
   userId!: number
   dtOptions: DataTables.Settings = {};
+  myFilterText!:any
 
+  title = 'Pagination'
+  page: number = 1
+  count: number = 0;
+  tableSize: number = 5;
+  tableSizes: any = [5, 10, 15, 20]
+ 
   constructor(private userService: UserService,private toast: NgToastService,private route: ActivatedRoute, private router: Router) { }
+   
 
   ngOnInit(): void {
-
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 5,
-      lengthMenu : [5, 10, 25, 100],
-      processing: true
-      
-    };
-
     this.getUserList();
   }
 
@@ -34,7 +33,19 @@ export class ListUserComponent implements OnInit {
     this.userService.getUserList().subscribe(data => {
       this.users = data;
       console.log(data);
+    
     });
+  }
+
+  onTableDataChange(event: any){
+    this.page = event;
+    this.getUserList()
+  }
+
+  onTableSizeChange(event: any){
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.getUserList()
   }
 
   
@@ -68,7 +79,6 @@ reloadPage(){
     relativeTo: this.route
   })
 }
-
-
-
-}
+ 
+ 
+} 

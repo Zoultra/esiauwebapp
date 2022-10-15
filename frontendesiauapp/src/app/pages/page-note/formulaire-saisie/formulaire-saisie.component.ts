@@ -66,7 +66,7 @@ export class FormulaireSaisieComponent implements OnInit {
     this.note.etudiant = this.etudiant
     this.noteService.createNote(this.note).subscribe( data =>{
       console.log(data)
-      this.goToNoteEtudiantList()
+      
       this.toast.success({detail:"Mesage de reussite",summary:"Note enrégistrée avec succès",duration:5000});
     })
   }

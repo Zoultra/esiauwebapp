@@ -11,7 +11,7 @@
 
             <div class="card">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item" *ngFor="let sousMenu of menu.sousMenu"> <a href="javascript:void();" (click)="navigate(sousMenu.url)"><i class="{{sousMenu.icon}}"></i> &nbsp;{{sousMenu.titre}}</a></li>
+                    <li class="list-group-item btn btn-primary" *ngFor="let sousMenu of menu.sousMenu"> <a (click)="navigate(sousMenu.url)"><i class="{{sousMenu.icon}}"></i> &nbsp;{{sousMenu.titre}}</a></li>
 
                 </ul>
             </div>

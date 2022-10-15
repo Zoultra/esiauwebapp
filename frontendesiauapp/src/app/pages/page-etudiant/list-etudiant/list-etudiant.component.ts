@@ -27,6 +27,12 @@ export class ListEtudiantComponent implements OnInit {
  toasts: any[] = [];
  myFilterText!:any
  myFilterText2!:any
+ 
+ title = 'Pagination'
+ page: number = 1
+ count: number = 0;
+ tableSize: number = 5;
+ tableSizes: any = [5, 10, 15, 20]
 
 
   constructor( private etudiantService: EtudiantService,  private router: Router,private toast: NgToastService,
@@ -35,15 +41,6 @@ export class ListEtudiantComponent implements OnInit {
   ngOnInit(): void {
 
   this.getEtudiants();
-  
-  this.dtOptions = {
-    pagingType: 'full_numbers',
-    pageLength: 4,
-    lengthMenu : [4, 10, 25, 100],
-    processing: true,
-    
-  };
-   
     this.getClasses()
 }
   
@@ -53,6 +50,17 @@ export class ListEtudiantComponent implements OnInit {
   this.etudiantService.getEtudiantList().subscribe(data => {
     this.listEtudiant = data;
 });
+}
+
+onTableDataChange(event: any){
+  this.page = event;
+  this.getEtudiants()
+}
+
+onTableSizeChange(event: any){
+  this.tableSize = event.target.value;
+  this.page = 1;
+  this.getEtudiants()
 }
 
 private getClasses() {

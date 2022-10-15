@@ -11,28 +11,40 @@ import { NgToastService } from 'ng-angular-popup';
 })
 export class ListMatiereComponent implements OnInit {
   listMatieres: Array<any>=[];
-  dtOptions: DataTables.Settings = {};
+  
+  
+  myFilterText!:any
+  title = 'Pagination'
+  page: number = 1
+  count: number = 0;
+  tableSize: number = 5;
+  tableSizes: any = [5, 10, 15, 20]
+  
    
   
   constructor(private matiereService: MatiereService, private router: Router,private toast: NgToastService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 5,
-      lengthMenu : [5, 10, 25, 100],
-      processing: true
-    };
-
+    this.getMatiereList()
+  }
+  
+  private getMatiereList(){
     this.matiereService.getMatiereList().subscribe(data => {
       this.listMatieres = data;
-      
       console.log(data);
     });
   }
-  
    
+  onTableDataChange(event: any){
+    this.page = event;
+    this.getMatiereList()
+  }
 
+  onTableSizeChange(event: any){
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.getMatiereList()
+  }
   updateMatiere(idMatiere: number){
     this.router.navigate(['dashboard/update-matiere', idMatiere]);
   }

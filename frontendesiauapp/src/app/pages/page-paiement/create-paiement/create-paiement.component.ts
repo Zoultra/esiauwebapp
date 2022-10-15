@@ -16,6 +16,13 @@ export class CreatePaiementComponent implements OnInit {
  listEtudiant: Array<Etudiant> = [];
  toasts: any[] = [];
  myFilterText!:any
+
+ myFilterText2!:any
+ title = 'Pagination'
+ page: number = 1
+ count: number = 0;
+ tableSize: number = 5;
+ tableSizes: any = [5, 10, 15, 20]
  
   constructor(private etudiantService: EtudiantService,private classeService: ClasseService, private router: Router, private route: ActivatedRoute) { }
 
@@ -26,16 +33,7 @@ export class CreatePaiementComponent implements OnInit {
   .subscribe(classes => {
     this.listClasse = classes;
   });
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 5,
-      lengthMenu : [5, 10, 25, 100],
-      processing: true,
-      stateSave: true,
-    /*  language: {
-        url: '//cdn.datatables.net/plug-ins/1.11.5/i18n/fr-FR.json'
-      },*/
-  }
+    
     
   }
 
@@ -45,6 +43,17 @@ export class CreatePaiementComponent implements OnInit {
   this.etudiantService.getEtudiantList().subscribe(data => {
     this.listEtudiant = data;
 });
+}
+
+onTableDataChange(event: any){
+  this.page = event;
+  this.getEtudiants()
+}
+
+onTableSizeChange(event: any){
+  this.tableSize = event.target.value;
+  this.page = 1;
+  this.getEtudiants()
 }
    ajouterPaiement(idEtudiant: number){
     this.router.navigate(['dashboard/saisie-paiement',idEtudiant]);

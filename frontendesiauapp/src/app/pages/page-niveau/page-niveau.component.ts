@@ -1,11 +1,9 @@
-import { Component, OnDestroy, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Niveau } from 'src/app/composants/models/niveau';
 import { NiveauService } from 'src/app/composants/services/niveau.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgToastService } from 'ng-angular-popup';
-import { CookieService } from 'ngx-cookie-service';
-
 
   
 declare var window:any;
@@ -21,11 +19,17 @@ export class PageNiveauComponent implements OnInit{
   idNiveau!: number;
   modalTitle!: String;
   toasts: any[] = [];
-  
   niveaux!: Niveau[];
   niveau: Niveau = new Niveau();
-  
   exform:any;
+
+  
+  myFilterText!:any
+  title = 'Pagination'
+  page: number = 1
+  count: number = 0;
+  tableSize: number = 5;
+  tableSizes: any = [5, 10, 15, 20]
 
   constructor(private niveauService: NiveauService,
     private router: Router,  private route: ActivatedRoute,private toast: NgToastService) { }
@@ -45,10 +49,7 @@ export class PageNiveauComponent implements OnInit{
    this.getNiveaux()
     
     
-
-    this.niveauService.getNiveauList().subscribe(data => {
-      this.niveaux = data;
-  });
+ 
 
     this.formModal = new window.bootstrap.Modal(
       document.getElementById('exampleModal')
@@ -106,6 +107,18 @@ export class PageNiveauComponent implements OnInit{
       this.niveaux = data;
   });
 }
+
+onTableDataChange(event: any){
+  this.page = event;
+  this.getNiveaux()
+}
+
+onTableSizeChange(event: any){
+  this.tableSize = event.target.value;
+  this.page = 1;
+  this.getNiveaux()
+}
+
 // Methode pour enregistrer un niveau
 saveNiveau(){
   this.niveauService.createNiveau(this.niveau).subscribe(data =>{

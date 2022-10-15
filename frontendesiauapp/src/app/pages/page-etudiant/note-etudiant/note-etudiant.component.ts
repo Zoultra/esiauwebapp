@@ -12,21 +12,21 @@ export class NoteEtudiantComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   notes: Array<any> = [];
   idEtudiant!:number
+  
   myFilterText!:any
+  myFilterText2!:any
+ 
+  title = 'Pagination'
+  page: number = 1
+  count: number = 0;
+  tableSize: number = 5;
+  tableSizes: any = [5, 10, 15, 20]
    
   
   constructor(private noteService: NoteService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 5,
-      lengthMenu : [5, 10, 25, 100],
-      processing: true,
-      language: {
-        url: '//cdn.datatables.net/plug-ins/1.11.5/i18n/fr-FR.json'
-      },
-  }
+   
    this.getNoteEtudiant();
 
   /*
@@ -47,6 +47,19 @@ export class NoteEtudiantComponent implements OnInit {
 },error => console.log(error));
         
   }
+
+  
+onTableDataChange(event: any){
+  this.page = event;
+  this.getNoteEtudiant()
+}
+
+onTableSizeChange(event: any){
+  this.tableSize = event.target.value;
+  this.page = 1;
+  this.getNoteEtudiant()
+}
+
 /* reload*/
 reloadPage(){
   this.router.routeReuseStrategy.shouldReuseRoute= () => false;

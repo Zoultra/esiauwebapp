@@ -21,19 +21,22 @@ export class PageClasseComponent implements OnInit {
   modalTitle!: string;
   toasts: any[] = [];
   exform:any;
-  idClasse!: number;
-  
-     
+  idClasse!: number;  
   classe: Classe = new Classe();
-  
   errorMsg: Array<string> = [];
-    
   listClasse: Array<any> = [];
   listNiv: Array<Niveau> = [];
   numero!:number
-   
   niveauDto : any={};
   
+  
+  myFilterText!:any
+  title = 'Pagination'
+  page: number = 1
+  count: number = 0;
+  tableSize: number = 5;
+  tableSizes: any = [5, 10, 15, 20]
+
   constructor(
     private classeService: ClasseService,
     private niveauService: NiveauService,
@@ -44,16 +47,6 @@ export class PageClasseComponent implements OnInit {
   ngOnInit(): void { 
     
   
-  
-  this.dtOptions = {
-    pagingType: 'full_numbers',
-    pageLength: 5,
-    lengthMenu : [5, 10, 25, 100],
-    processing: true,
-   /* language: {
-      url: '//cdn.datatables.net/plug-ins/1.11.5/i18n/fr-FR.json'
-    },*/
-}
 this.getclasses();
   this.formModal = new window.bootstrap.Modal(
     document.getElementById('exampleModal')
@@ -129,12 +122,18 @@ private getclasses() {
      
 });
 }
-/* Methode pour recuperer la liste de tous les niveaux
-private getNiveaux() {
-  this.niveauService.getNiveauList().subscribe(data => {
-    this.niveaux = data;
-});
-}*/
+
+onTableDataChange(event: any){
+  this.page = event;
+  this.getclasses()
+}
+
+onTableSizeChange(event: any){
+  this.tableSize = event.target.value;
+  this.page = 1;
+  this.getclasses()
+}
+
 // Methode pour enregistrer un classe
 saveClasse(): void{
   

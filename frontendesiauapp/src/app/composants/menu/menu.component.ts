@@ -215,18 +215,33 @@ export class MenuComponent implements OnInit {
   },
   {
     id:'10',
-    titre:'Utilisateurs',
+    titre:'Dépenses',
     icon:'fa fa-tasks',
     url:'',
     sousMenu: [
       {
         id:'101',
+        titre:'Gestion des dépenses',
+        icon:'fa fa-user',
+        url:'dashboard/gestion-depense/list-depense'
+      } 
+       
+    ]
+  },
+  {
+    id:'11',
+    titre:'Utilisateurs',
+    icon:'fa fa-tasks',
+    url:'',
+    sousMenu: [
+      {
+        id:'111',
         titre:'Gestion des comptes',
         icon:'fa fa-user',
         url:'dashboard/gestion-user/list-user'
       },
       {
-        id:'102',
+        id:'112',
         titre:'Mon compte',
         icon:'fa fa-user',
         url:'dashboard/gestion-compte'

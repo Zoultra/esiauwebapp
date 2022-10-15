@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {DataTablesModule} from 'angular-datatables';
-
+import {NgxPaginationModule} from 'ngx-pagination'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PageLoginComponent } from './pages/page-login/page-login.component';
@@ -50,6 +50,9 @@ import { ListPretComponent } from './pages/page-personnel/list-pret/list-pret.co
 import { ListUserComponent } from './pages/page-user/list-user/list-user.component';
 import { UpdateUserComponent } from './pages/page-user/update-user/update-user.component';
 import { CreateUserComponent } from './pages/page-user/create-user/create-user.component';
+import { CreateDepenseComponent } from './pages/page-depense/create-depense/create-depense.component';
+import { ListDepenseComponent } from './pages/page-depense/list-depense/list-depense.component';
+import { UpdateDepenseComponent } from './pages/page-depense/update-depense/update-depense.component';
 
 
 
@@ -98,7 +101,10 @@ import { CreateUserComponent } from './pages/page-user/create-user/create-user.c
     ListPretComponent,
     ListUserComponent,
     UpdateUserComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    CreateDepenseComponent,
+    ListDepenseComponent,
+    UpdateDepenseComponent
  
    
   ],
@@ -110,7 +116,8 @@ import { CreateUserComponent } from './pages/page-user/create-user/create-user.c
     FormsModule,
     ReactiveFormsModule,
     NgToastModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    NgxPaginationModule
 
   ],
   providers: [],

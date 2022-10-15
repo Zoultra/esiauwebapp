@@ -24,6 +24,12 @@ export class ProfMatiereComponent implements OnInit {
   matiereprofs: Array<any> = [];
   dtOptions: DataTables.Settings = {};
   
+  myFilterText!:any
+  title = 'Pagination'
+  page: number = 1
+  count: number = 0;
+  tableSize: number = 5;
+  tableSizes: any = [5, 10, 15, 20]
 
   constructor(
     
@@ -38,12 +44,7 @@ export class ProfMatiereComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 5,
-      lengthMenu : [5, 10, 25, 100],
-      processing: true,
-  }
+   
 
     this.classeService.getClasseList()
     .subscribe(classes => {
@@ -56,6 +57,7 @@ export class ProfMatiereComponent implements OnInit {
       this.matieres = data;
       console.log(data);
     });
+    
 
     // Methode pour recuperer la liste de tous les profs
  
@@ -93,6 +95,17 @@ export class ProfMatiereComponent implements OnInit {
         this.matiereprofs = reponse;
         console.log(reponse);
     });
+    }
+
+    onTableDataChange(event: any){
+      this.page = event;
+      this.getMatiereProfList()
+    }
+  
+    onTableSizeChange(event: any){
+      this.tableSize = event.target.value;
+      this.page = 1;
+      this.getMatiereProfList()
     }
     
     

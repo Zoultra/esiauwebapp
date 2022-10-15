@@ -24,12 +24,16 @@
                             <label for="exampleInputEmail1">Semestre:</label>
                             <select class="form-select" name="examen" formControlName="examen" [ngClass]="{'is-invalid':submitted && registerForm.controls}" [(ngModel)]="note.examen">
                                 <option [ngValue]="null" disabled selected >Selectionner semestre </option>
-                                <option value="1"  >Semestre 1</option>
-                                <option value="2"  >Semestre 2</option>
-                                <option value="3"  >Semestre 3</option>
-                                <option value="4"  >Semestre 4</option>
-                                <option value="5"  >Semestre 5</option>
-                                <option value="6"  >Semestre 6</option>
+                                <option value="L1-Semestre-1"  >L1 Semestre 1</option>
+                                <option value="L1-Semestre-2"  >L1 Semestre 2</option>
+                                <option value="L2-Semestre-3"  >L2 Semestre 3</option>
+                                <option value="L2-Semestre-4"  >L5 Semestre 4</option>
+                                <option value="L3-Semestre-5"  >L3 Semestre 5</option>
+                                <option value="L3-Semestre-6"  >L3 Semestre 6</option>
+                                <option value="M1-Semestre-1"  >M1 Semestre 1</option>
+                                <option value="M1-Semestre-2"  >M1 Semestre 2</option>
+                                <option value="M2-Semestre-3"  >M2 Semestre 3</option>
+                                <option value="M2-Semestre-4"  >M2 Semestre 4</option>
                             </select>
                             <div *ngIf="submitted && registerForm.controls" class="text-danger">
                                 <div *ngIf="submitted && registerForm.controls">
@@ -76,3 +80,5 @@
         </div>
     </div>
 </div>
+
+<app-note-etudiant></app-note-etudiant>

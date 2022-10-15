@@ -11,22 +11,19 @@ import { Departement } from '../../../composants/models/departement';
 })
 export class ListDepartementComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
-  departements: Array<Departement> = [];
+  departements: Departement[] = [];
+  
+  myFilterText!:any
+  title = 'Pagination'
+  page: number = 1
+  count: number = 0;
+  tableSize: number = 5;
+  tableSizes: any = [5, 10, 15, 20]
+  
   constructor(private departementService: DepartementService, private router: Router,private toast: NgToastService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 10,
-      lengthMenu : [10, 15, 25, 100],
-      
-      
-     /* language: {
-        url: '//cdn.datatables.net/plug-ins/1.11.5/i18n/fr-FR.json'
-      },*/
-  }
-   this.getDepartements()
-
+    this.getDepartements()
   }
 
 
@@ -40,6 +37,17 @@ export class ListDepartementComponent implements OnInit {
 // Methode pour editer un departement
 updateDepartement(idDepartement: number){
   this.router.navigate(['dashboard/update-departement',idDepartement]);
+}
+
+onTableDataChange(event: any){
+  this.page = event;
+  this.getDepartements()
+}
+
+onTableSizeChange(event: any){
+  this.tableSize = event.target.value;
+  this.page = 1;
+  this.getDepartements()
 }
 
 deleteDepartement(idDepartement: number){
