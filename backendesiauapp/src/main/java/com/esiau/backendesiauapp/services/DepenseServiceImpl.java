@@ -30,7 +30,7 @@ public class DepenseServiceImpl implements DepenseService{
 	@Override
 	public void  deleteDepenseById(int idDepense) {
 		// TODO Auto-generated method stub
-		depenseRepository.deleteAll();
+		depenseRepository.deleteById(idDepense);;
 	}
 
 	@Override

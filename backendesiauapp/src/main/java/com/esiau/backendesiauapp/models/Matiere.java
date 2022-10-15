@@ -32,6 +32,9 @@ public class Matiere {
 	@Column(name = "nom_matiere")  
 	private String nomMatiere;
 	
+	@Column(name = "coefficient")  
+	private String coefficient;
+	
 	@ManyToOne
     @JoinColumn(name = "id_ue", nullable = false)
     private UE ue; 

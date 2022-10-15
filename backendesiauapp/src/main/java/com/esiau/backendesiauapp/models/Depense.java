@@ -27,5 +27,8 @@ public class Depense {
 	@Column(name = "motant_depense")
 	private int montantDepense;
 	
+	@Column(name = "date_depense")
+	private String dateDepense;
+	
 	
 }

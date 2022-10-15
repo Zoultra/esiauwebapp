@@ -48,7 +48,12 @@ public class MatiereController {
 						String nomMatiere = matiere.getNomMatiere();
 						if(nomMatiere != null) {
 							currentMatiere.setNomMatiere(nomMatiere);
-						} 
+						}
+						
+						String coefficient = matiere.getCoefficient();
+						if(coefficient != null) {
+							currentMatiere.setCoefficient(coefficient);
+						}
 						
 						 
 						matiereService.saveMatiere(currentMatiere);
