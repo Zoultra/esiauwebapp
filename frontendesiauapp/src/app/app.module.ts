@@ -53,6 +53,9 @@ import { CreateUserComponent } from './pages/page-user/create-user/create-user.c
 import { CreateDepenseComponent } from './pages/page-depense/create-depense/create-depense.component';
 import { ListDepenseComponent } from './pages/page-depense/list-depense/list-depense.component';
 import { UpdateDepenseComponent } from './pages/page-depense/update-depense/update-depense.component';
+import { ListAnneeComponent } from './pages/page-annee/list-annee/list-annee.component';
+import { CreateAnneeComponent } from './pages/page-annee/create-annee/create-annee.component';
+import { UpdateAnneeComponent } from './pages/page-annee/update-annee/update-annee.component';
 
 
 
@@ -104,7 +107,10 @@ import { UpdateDepenseComponent } from './pages/page-depense/update-depense/upda
     CreateUserComponent,
     CreateDepenseComponent,
     ListDepenseComponent,
-    UpdateDepenseComponent
+    UpdateDepenseComponent,
+    ListAnneeComponent,
+    CreateAnneeComponent,
+    UpdateAnneeComponent
  
    
   ],

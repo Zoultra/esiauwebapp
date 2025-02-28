@@ -169,7 +169,7 @@ export class MenuComponent implements OnInit {
         id:'82',
         titre:'Notes / Classes',
         icon:'fa fa-info-circle',
-        url:''
+        url:'dashboard/note'
       }
     ]
   },
@@ -245,6 +245,27 @@ export class MenuComponent implements OnInit {
         titre:'Mon compte',
         icon:'fa fa-user',
         url:'dashboard/gestion-compte'
+      }
+       
+    ]
+  },
+  {
+    id:'113',
+    titre:'Années',
+    icon:'fa fa-tasks',
+    url:'',
+    sousMenu: [
+      {
+        id:'1113',
+        titre:'Gestion des années scolaires',
+        icon:'fa fa-user',
+        url:'dashboard/gestion-annee/list-annee'
+      },
+      {
+        id:'1114',
+        titre:'Mon compte',
+        icon:'fa fa-user',
+        url:'dashboard/gestion-annee'
       }
        
     ]

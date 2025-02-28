@@ -157,8 +157,10 @@ deleteNiveau(idNiveau: number){
 // Methode pour appeller la methode saveNiveau pour l'ajout de niveau
  
 onSubmit(){
+ 
   console.log(this.niveau);
   this.saveNiveau();
+  this.reloadPage();
 }
 
 
@@ -167,9 +169,10 @@ reloadPage(){
   
   this.router.routeReuseStrategy.shouldReuseRoute= () => false;
   this.router.onSameUrlNavigation = 'reload';
-  this.router.navigate(['./'], {
+  this.router.navigate(['./niveau'], {
     relativeTo: this.route
   })
+ 
 }
 
 

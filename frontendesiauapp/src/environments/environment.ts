@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: true,
+  apiUrl: 'lively-embrace-production.up.railway.app/backendesiauapp/v1'
 };
 
 /*

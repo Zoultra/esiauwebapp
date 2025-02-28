@@ -2,12 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Etudiant } from '../models/etudiant';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EtudiantService {
-  private baseURL = "http://localhost:9201/backendesiauapp/v1/etudiants";
+
+  private baseURL = `${environment.apiUrl}/etudiants`;
+   
   constructor( private httpClient: HttpClient) { }
 
   

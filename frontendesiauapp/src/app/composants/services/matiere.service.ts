@@ -2,12 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Matiere } from '../models/matiere';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MatiereService {
-  private baseURL = "http://localhost:9201/backendesiauapp/v1/matiere";
+  private baseURL = `${environment.apiUrl}/matiere`;
+  
   constructor(private httpClient: HttpClient) { }
 
   

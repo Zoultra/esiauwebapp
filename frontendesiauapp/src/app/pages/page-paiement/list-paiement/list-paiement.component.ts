@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { Etudiant } from 'src/app/composants/models/etudiant';
 import { Paiement } from 'src/app/composants/models/paiement';
@@ -25,6 +25,7 @@ export class ListPaiementComponent implements OnInit {
   constructor(private toast: NgToastService, 
     private paiementService : PaiementService,
     private etudiantService: EtudiantService,
+    private router: Router,
     private route: ActivatedRoute,) { }
 
   ngOnInit(): void {
@@ -75,8 +76,12 @@ export class ListPaiementComponent implements OnInit {
   
 /* reload*/
 reloadPage(){
-  
-  window.location.reload();
+   
+  this.router.routeReuseStrategy.shouldReuseRoute= () => false;
+  this.router.onSameUrlNavigation = 'reload';
+  this.router.navigate(['./'], {
+    relativeTo: this.route
+  })
 }
 
 }

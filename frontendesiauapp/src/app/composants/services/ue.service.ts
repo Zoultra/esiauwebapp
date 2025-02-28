@@ -2,12 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UE } from '../models/ue';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UeService {
-  private baseURL = "http://localhost:9201/backendesiauapp/v1/ue";
+  private baseURL = `${environment.apiUrl}/ue`;
   constructor(private httpClient: HttpClient) { }
 
   getUeList(): Observable<UE[]>{

@@ -14,8 +14,9 @@ export class UpdateDepartementComponent implements OnInit {
   constructor(
     private router: Router,private route: ActivatedRoute,
     private toast: NgToastService,private departementService: DepartementService) { }
-  departement: Departement = new Departement();
-  idDepartement!: number 
+    departement: Departement = new Departement();
+    idDepartement!: number 
+
   ngOnInit(): void {
     this.idDepartement = this.route.snapshot.params['idDepartement']
     this.departementService.getDepartementById(this.idDepartement).subscribe(data => {

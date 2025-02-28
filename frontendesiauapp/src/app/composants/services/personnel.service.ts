@@ -3,15 +3,17 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Personnel } from '../models/personnel';
 import { Pret } from '../models/pret';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PersonnelService {
 
-  private baseURL = "http://localhost:9201/backendesiauapp/v1/personnel";
-  private baseURL2 = "http://localhost:9201/backendesiauapp/v1/pret";
-  private baseURL3 = "http://localhost:9201/backendesiauapp/v1/pret/personnel";
+  private baseURL = `${environment.apiUrl}/personnel`;
+  private baseURL2 = `${environment.apiUrl}/pret`;
+  private baseURL3 = `${environment.apiUrl}/pret/personnel`;
+   
   constructor(private httpClient: HttpClient) { }
 
   

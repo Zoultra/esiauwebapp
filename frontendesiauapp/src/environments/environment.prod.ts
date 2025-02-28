@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+   apiUrl: 'lively-embrace-production.up.railway.app/backendesiauapp/v1'
 };

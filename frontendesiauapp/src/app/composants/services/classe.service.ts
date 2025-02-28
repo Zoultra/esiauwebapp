@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Classe } from '../models/classe';
-
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClasseService {
-  private baseURL = "http://localhost:9201/backendesiauapp/v1/classes";
+
+  private baseURL = `${environment.apiUrl}/classes`;  
   constructor( private httpClient: HttpClient) { }
 
   getClasseList(): Observable<Classe[]>{

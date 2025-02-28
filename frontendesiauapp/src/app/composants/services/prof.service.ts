@@ -3,15 +3,17 @@ import { HttpClient } from '@angular/common/http';
 import { Professeur } from '../models/prof';
 import { Observable } from 'rxjs';
 import { ProfesseurMatiere } from '../models/prof-matiere';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfService {
-  private baseURL = "http://localhost:9201/backendesiauapp/v1/professeur";
-  private baseURL2 = "http://localhost:9201/backendesiauapp/v1/professeur/addmatiere";
-  private baseURL3 = "http://localhost:9201/backendesiauapp/v1/professeur/matiere";
-  private baseURL4 = "http://localhost:9201/backendesiauapp/v1/professeur/matieres";
+  private baseURL = `${environment.apiUrl}/professeur`;
+  private baseURL2 = `${environment.apiUrl}/professeur/addmatiere`;
+  private baseURL3 = `${environment.apiUrl}/professeur/matiere`;
+  private baseURL4 = `${environment.apiUrl}/professeur/matieres`;
+  
   constructor(private httpClient: HttpClient) { }
 
   

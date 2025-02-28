@@ -2,13 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Depense } from '../models/depense';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DepenseService {
 
-  private baseURL = "http://localhost:9201/backendesiauapp/v1/depense";
+  private baseURL = `${environment.apiUrl}/depense`;
+  
   
   constructor(private httpClient: HttpClient) { }
 

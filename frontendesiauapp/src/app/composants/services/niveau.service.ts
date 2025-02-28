@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { Niveau } from '../models/niveau';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,9 @@ export class NiveauService {
     throw new Error('Method not implemented.');
   }
 
-   private baseURL = "http://localhost:9201/backendesiauapp/v1/niveaux";
+  private baseURL = `${environment.apiUrl}/niveaux`;
+
+   
   constructor( private httpClient: HttpClient) { }
 
   getNiveauList(): Observable<Niveau[]>{

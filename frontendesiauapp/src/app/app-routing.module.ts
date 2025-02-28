@@ -41,6 +41,9 @@ import { CreateUserComponent } from './pages/page-user/create-user/create-user.c
 import { CreateDepenseComponent } from './pages/page-depense/create-depense/create-depense.component';
 import { UpdateDepenseComponent } from './pages/page-depense/update-depense/update-depense.component';
 import { ListDepenseComponent } from './pages/page-depense/list-depense/list-depense.component';
+import { ListAnneeComponent } from './pages/page-annee/list-annee/list-annee.component';
+import { UpdateAnneeComponent } from './pages/page-annee/update-annee/update-annee.component';
+import { CreateAnneeComponent } from './pages/page-annee/create-annee/create-annee.component';
 
 
 
@@ -229,7 +232,19 @@ const routes: Routes = [
       {
         path: 'gestion-depense/update-depense/:idDepense',
         component: UpdateDepenseComponent
-      }
+      }, 
+       {
+        path: 'gestion-annee/list-annee',
+        component: ListAnneeComponent
+      }, 
+      {
+       path: 'gestion-annee/update-annee/:idAnnee',
+       component: UpdateAnneeComponent
+     }, 
+     {
+      path: 'gestion-annee/create-annee',
+      component: CreateAnneeComponent
+    }
     ] 
   }
    
