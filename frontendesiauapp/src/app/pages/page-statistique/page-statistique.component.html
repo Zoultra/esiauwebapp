@@ -1,1 +1,58 @@
-<h1>page-statistique works!</h1>
+<div class="card mb-2" style="min-height: 780px;">
+    <main class="col-md-9 col-lg-10 mx-auto px-md-9">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Tableau de Bord - Gestion Scolaire</h1>
+        </div>
+
+        <!-- Statistiques principales -->
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card text-white bg-primary mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Étudiants</h5>
+                        <p class="card-text">Nombre : {{ totalEtudiants }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card text-white bg-success mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Enseignants</h5>
+                        <p class="card-text">Nombre : {{ totalEnseignants }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card text-white bg-warning mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Nombre de Classes</h5>
+                        <p class="card-text">Total : {{ totalClasses }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Graphiques -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="chart-container">
+                    <canvas baseChart 
+                        [data]="barChartData" 
+                        [options]="barChartOptions" 
+                        [type]="barChartType">
+                    </canvas>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="chart-container">
+                    <canvas baseChart 
+                        [data]="pieChartData" 
+                        [type]="pieChartType">
+                    </canvas>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>

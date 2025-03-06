@@ -42,7 +42,7 @@ export class PageLoginComponent implements OnInit {
       this.authService.authenticationUser(appUser).subscribe({
         next: (data: boolean)=>{
          
-          this.router.navigateByUrl("/dashboard");
+          this.router.navigateByUrl("/dashboard/statistique");
           this.toast.success({detail:"Mesage de reussite",summary:"Connexion effectuée avec succès",duration:3000});
    
         }
