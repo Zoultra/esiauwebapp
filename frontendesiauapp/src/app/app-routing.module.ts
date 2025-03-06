@@ -67,7 +67,7 @@ const routes: Routes = [
     component: PageDashboardComponent, canActivate: [AuthenticationGuard],
     children:[
       {
-        path: 'dashboard/statistique',
+        path: 'statistique',
         component: PageStatistiqueComponent
       },
 

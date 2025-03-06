@@ -56,7 +56,7 @@ import { UpdateDepenseComponent } from './pages/page-depense/update-depense/upda
 import { ListAnneeComponent } from './pages/page-annee/list-annee/list-annee.component';
 import { CreateAnneeComponent } from './pages/page-annee/create-annee/create-annee.component';
 import { UpdateAnneeComponent } from './pages/page-annee/update-annee/update-annee.component';
-
+import { NgChartsModule } from 'ng2-charts';
 
 
 
@@ -111,6 +111,7 @@ import { UpdateAnneeComponent } from './pages/page-annee/update-annee/update-ann
     ListAnneeComponent,
     CreateAnneeComponent,
     UpdateAnneeComponent
+    
  
    
   ],
@@ -123,7 +124,8 @@ import { UpdateAnneeComponent } from './pages/page-annee/update-annee/update-ann
     ReactiveFormsModule,
     NgToastModule,
     Ng2SearchPipeModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgChartsModule
 
   ],
   providers: [],

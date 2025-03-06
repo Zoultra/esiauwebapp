@@ -1,20 +1,18 @@
-<div class="row">
-    <div class="col-md-10">
-        <div class="input-group flex-nowrap">
-            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
-            <span class="input-group-text" id="addon-wrapping"><i class="fa fa-search"></i></span>
+ 
 
-        </div>
+<div class="d-flex justify-content-between align-items-center p-3 bg-light shadow-sm rounded">
+    
+    <!-- Bienvenue User -->
+    <div class="d-flex align-items-center">
+        <img src="../../../assets/icons/avatar.svg" alt="Avatar" class="rounded-circle me-2" width="40" height="40">
+        <h5 class="mb-0 fw-bold text-primary">Bienvenue, {{authService.authenticatedUser?.prenomUser}}  {{authService.authenticatedUser?.nomUser}} 👋</h5>
     </div>
-    <div class="col-md-2">
-        <div class="row">
-            <div class="col-md-8 text-end">
-                <span> {{authService.authenticatedUser?.prenomUser}}  {{authService.authenticatedUser?.nomUser}}</span>
-            </div>
-            <div class="col-md-4">
-                <button (click)="handleLogout()" class="btn btn-danger"><i class="fa fa-power-off"></i></button>
-            </div>
-        </div>
 
-    </div>
+    <!-- Bouton Déconnexion -->
+    <button (click)="handleLogout()" class="btn btn-outline-danger d-flex align-items-center">
+        <i class="fa fa-power-off me-2"></i> Déconnexion
+    </button>
+
 </div>
+
+ 
